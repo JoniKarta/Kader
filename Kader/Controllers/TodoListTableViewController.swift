@@ -83,3 +83,22 @@ class TodoListTableViewController: UITableViewController {
         present(addItemDialog, animated: true, completion:nil)
     }
 }
+
+// MARK: - Search in the todo list
+extension TodoListTableViewController : UISearchBarDelegate {
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Query the firebase for a given seach
+        // Get the values from the firebase
+        // Update the todoListArray
+        // Notify the table of the changes
+        
+        for item in todoListArray {
+            if item.task.contains(searchBar.text!){
+                print(item.task)
+            }
+        }
+        
+        
+    }
+}
