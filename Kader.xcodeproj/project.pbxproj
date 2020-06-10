@@ -103,7 +103,7 @@
 			children = (
 				C01824F024902CBD0046CBAB /* AppDelegate.swift */,
 				C01824F224902CBD0046CBAB /* SceneDelegate.swift */,
-				C0EE37BB2490CB47009D36A5 /* Conrollers */,
+				C0EE37BB2490CB47009D36A5 /* Controllers */,
 				C0EE37BA2490CAE9009D36A5 /* Model */,
 				C0EE37BC2490CB5B009D36A5 /* Views */,
 				C01824F924902CBE0046CBAB /* Assets.xcassets */,
@@ -139,12 +139,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C0EE37BB2490CB47009D36A5 /* Conrollers */ = {
+		C0EE37BB2490CB47009D36A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C018252024902E620046CBAB /* TodoListTableViewController.swift */,
 			);
-			path = Conrollers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C0EE37BC2490CB5B009D36A5 /* Views */ = {
