@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01824F024902CBD0046CBAB /* AppDelegate.swift */; };
+		C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01824F224902CBD0046CBAB /* SceneDelegate.swift */; };
+		C01824F824902CBD0046CBAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01824F624902CBD0046CBAB /* Main.storyboard */; };
+		C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01824F924902CBE0046CBAB /* Assets.xcassets */; };
+		C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */; };
+		C018250824902CBF0046CBAB /* KaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018250724902CBF0046CBAB /* KaderTests.swift */; };
+		C018251324902CBF0046CBAB /* KaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018251224902CBF0046CBAB /* KaderUITests.swift */; };
+		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C018250424902CBE0046CBAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C01824E524902CBD0046CBAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C01824EC24902CBD0046CBAB;
+			remoteInfo = Kader;
+		};
+		C018250F24902CBF0046CBAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C01824E524902CBD0046CBAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C01824EC24902CBD0046CBAB;
+			remoteInfo = Kader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C01824ED24902CBD0046CBAB /* Kader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01824F024902CBD0046CBAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C01824F224902CBD0046CBAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C01824F724902CBD0046CBAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C01824F924902CBE0046CBAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C01824FC24902CBE0046CBAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C01824FE24902CBE0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C018250324902CBE0046CBAB /* KaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C018250724902CBF0046CBAB /* KaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaderTests.swift; sourceTree = "<group>"; };
+		C018250924902CBF0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C018250E24902CBF0046CBAB /* KaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C018251224902CBF0046CBAB /* KaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaderUITests.swift; sourceTree = "<group>"; };
+		C018251424902CBF0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C01824EA24902CBD0046CBAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C018250024902CBE0046CBAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C018250B24902CBF0046CBAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C01824E424902CBD0046CBAB = {
+			isa = PBXGroup;
+			children = (
+				C01824EF24902CBD0046CBAB /* Kader */,
+				C018250624902CBF0046CBAB /* KaderTests */,
+				C018251124902CBF0046CBAB /* KaderUITests */,
+				C01824EE24902CBD0046CBAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C01824EE24902CBD0046CBAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C01824ED24902CBD0046CBAB /* Kader.app */,
+				C018250324902CBE0046CBAB /* KaderTests.xctest */,
+				C018250E24902CBF0046CBAB /* KaderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C01824EF24902CBD0046CBAB /* Kader */ = {
+			isa = PBXGroup;
+			children = (
+				C01824F024902CBD0046CBAB /* AppDelegate.swift */,
+				C01824F224902CBD0046CBAB /* SceneDelegate.swift */,
+				C018252024902E620046CBAB /* TodoListTableViewController.swift */,
+				C01824F624902CBD0046CBAB /* Main.storyboard */,
+				C01824F924902CBE0046CBAB /* Assets.xcassets */,
+				C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */,
+				C01824FE24902CBE0046CBAB /* Info.plist */,
+			);
+			path = Kader;
+			sourceTree = "<group>";
+		};
+		C018250624902CBF0046CBAB /* KaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				C018250724902CBF0046CBAB /* KaderTests.swift */,
+				C018250924902CBF0046CBAB /* Info.plist */,
+			);
+			path = KaderTests;
+			sourceTree = "<group>";
+		};
+		C018251124902CBF0046CBAB /* KaderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C018251224902CBF0046CBAB /* KaderUITests.swift */,
+				C018251424902CBF0046CBAB /* Info.plist */,
+			);
+			path = KaderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C01824EC24902CBD0046CBAB /* Kader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C018251724902CBF0046CBAB /* Build configuration list for PBXNativeTarget "Kader" */;
+			buildPhases = (
+				C01824E924902CBD0046CBAB /* Sources */,
+				C01824EA24902CBD0046CBAB /* Frameworks */,
+				C01824EB24902CBD0046CBAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kader;
+			productName = Kader;
+			productReference = C01824ED24902CBD0046CBAB /* Kader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C018250224902CBE0046CBAB /* KaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C018251A24902CBF0046CBAB /* Build configuration list for PBXNativeTarget "KaderTests" */;
+			buildPhases = (
+				C01824FF24902CBE0046CBAB /* Sources */,
+				C018250024902CBE0046CBAB /* Frameworks */,
+				C018250124902CBE0046CBAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C018250524902CBE0046CBAB /* PBXTargetDependency */,
+			);
+			name = KaderTests;
+			productName = KaderTests;
+			productReference = C018250324902CBE0046CBAB /* KaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C018250D24902CBF0046CBAB /* KaderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C018251D24902CBF0046CBAB /* Build configuration list for PBXNativeTarget "KaderUITests" */;
+			buildPhases = (
+				C018250A24902CBF0046CBAB /* Sources */,
+				C018250B24902CBF0046CBAB /* Frameworks */,
+				C018250C24902CBF0046CBAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C018251024902CBF0046CBAB /* PBXTargetDependency */,
+			);
+			name = KaderUITests;
+			productName = KaderUITests;
+			productReference = C018250E24902CBF0046CBAB /* KaderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C01824E524902CBD0046CBAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = user165579;
+				TargetAttributes = {
+					C01824EC24902CBD0046CBAB = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					C018250224902CBE0046CBAB = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = C01824EC24902CBD0046CBAB;
+					};
+					C018250D24902CBF0046CBAB = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = C01824EC24902CBD0046CBAB;
+					};
+				};
+			};
+			buildConfigurationList = C01824E824902CBD0046CBAB /* Build configuration list for PBXProject "Kader" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C01824E424902CBD0046CBAB;
+			productRefGroup = C01824EE24902CBD0046CBAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C01824EC24902CBD0046CBAB /* Kader */,
+				C018250224902CBE0046CBAB /* KaderTests */,
+				C018250D24902CBF0046CBAB /* KaderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C01824EB24902CBD0046CBAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */,
+				C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */,
+				C01824F824902CBD0046CBAB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C018250124902CBE0046CBAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C018250C24902CBF0046CBAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C01824E924902CBD0046CBAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
+				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
+				C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C01824FF24902CBE0046CBAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C018250824902CBF0046CBAB /* KaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C018250A24902CBF0046CBAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C018251324902CBF0046CBAB /* KaderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C018250524902CBE0046CBAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C01824EC24902CBD0046CBAB /* Kader */;
+			targetProxy = C018250424902CBE0046CBAB /* PBXContainerItemProxy */;
+		};
+		C018251024902CBF0046CBAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C01824EC24902CBD0046CBAB /* Kader */;
+			targetProxy = C018250F24902CBF0046CBAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C01824F624902CBD0046CBAB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C01824F724902CBD0046CBAB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C01824FC24902CBE0046CBAB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C018251524902CBF0046CBAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C018251624902CBF0046CBAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C018251824902CBF0046CBAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Kader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.Kader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C018251924902CBF0046CBAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Kader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.Kader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C018251B24902CBF0046CBAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KaderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.KaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kader.app/Kader";
+			};
+			name = Debug;
+		};
+		C018251C24902CBF0046CBAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KaderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.KaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kader.app/Kader";
+			};
+			name = Release;
+		};
+		C018251E24902CBF0046CBAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KaderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.KaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kader;
+			};
+			name = Debug;
+		};
+		C018251F24902CBF0046CBAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KaderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.KaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01824E824902CBD0046CBAB /* Build configuration list for PBXProject "Kader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C018251524902CBF0046CBAB /* Debug */,
+				C018251624902CBF0046CBAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C018251724902CBF0046CBAB /* Build configuration list for PBXNativeTarget "Kader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C018251824902CBF0046CBAB /* Debug */,
+				C018251924902CBF0046CBAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C018251A24902CBF0046CBAB /* Build configuration list for PBXNativeTarget "KaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C018251B24902CBF0046CBAB /* Debug */,
+				C018251C24902CBF0046CBAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C018251D24902CBF0046CBAB /* Build configuration list for PBXNativeTarget "KaderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C018251E24902CBF0046CBAB /* Debug */,
+				C018251F24902CBF0046CBAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C01824E524902CBD0046CBAB /* Project object */;
+}
