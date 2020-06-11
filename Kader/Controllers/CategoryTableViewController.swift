@@ -44,10 +44,15 @@ class CategoryTableViewController: UITableViewController {
     
     // Preperation for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TodoListTableViewController
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categotyList[indexPath.row]
+        if segue.identifier == "todoListItems" {
+            let destinationVC = segue.destination as! TodoListTableViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedCategory = categotyList[indexPath.row]
+            }
+        }else if segue.identifier == "JoinNewGroup"{
+            
         }
+       
     }
    
     // MARK: - ADD NEW CATEGORY TO THE LIST

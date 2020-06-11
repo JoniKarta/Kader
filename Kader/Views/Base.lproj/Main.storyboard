@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Our Tasks-->
+        <!--Tasks-->
         <scene sceneID="wBn-AF-Oad">
             <objects>
                 <tableViewController id="3hh-Bz-ALl" customClass="TodoListTableViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                             <outlet property="delegate" destination="3hh-Bz-ALl" id="QhM-7X-w5p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Our Tasks" id="FMl-zH-rXv">
+                    <navigationItem key="navigationItem" title="Tasks" id="FMl-zH-rXv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OTx-Fx-CAb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -49,9 +49,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFl-kX-Rah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2584" y="-467"/>
+            <point key="canvasLocation" x="-2596" y="-72"/>
         </scene>
-        <!--Group Category List-->
+        <!--My Group List-->
         <scene sceneID="guW-4f-xqj">
             <objects>
                 <tableViewController id="1sl-yD-cJT" customClass="CategoryTableViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,13 +74,20 @@
                             <outlet property="delegate" destination="1sl-yD-cJT" id="eW2-Eq-W4D"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Group Category List" id="krY-TY-hVP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QPR-cb-Lf6">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="category_BTN_add:" destination="1sl-yD-cJT" id="maO-me-QXg"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="My Group List" id="krY-TY-hVP">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="QPR-cb-Lf6">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="category_BTN_add:" destination="1sl-yD-cJT" id="maO-me-QXg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="0DR-aH-jh5">
+                                <connections>
+                                    <segue destination="IyK-Yj-9nd" kind="show" identifier="JoinNewGroup" id="aIK-Ff-BWb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="3hh-Bz-ALl" kind="show" identifier="todoListItems" id="AVY-gU-2VE"/>
@@ -319,7 +326,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPI-8R-PRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3754" y="295"/>
+            <point key="canvasLocation" x="-3713" y="208"/>
+        </scene>
+        <!--Join To New Group-->
+        <scene sceneID="cs6-JE-uJf">
+            <objects>
+                <viewController id="IyK-Yj-9nd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tN0-Ck-kQU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Kp-QT-MvM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="tol-Z0-FsU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="3hh-Bz-ALl" id="hts-8p-rNd"/>
+                                    </connections>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoListItem" id="Dux-Qo-vcn">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dux-Qo-vcn" id="fum-9t-whf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3hh-Bz-ALl" id="AZl-ST-oh1"/>
+                                    <outlet property="delegate" destination="3hh-Bz-ALl" id="dS1-ky-ss8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="36U-0P-Jyz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Join To New Group" id="v5X-i9-YO9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDM-JM-aC6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2597" y="-899"/>
         </scene>
     </scenes>
     <resources>
