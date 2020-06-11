@@ -15,7 +15,9 @@
 		C018250824902CBF0046CBAB /* KaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018250724902CBF0046CBAB /* KaderTests.swift */; };
 		C018251324902CBF0046CBAB /* KaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018251224902CBF0046CBAB /* KaderUITests.swift */; };
 		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
+		C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C098C8E524913AE500B50E21 /* CategoryItem.swift */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
+		C0EE37BE24911E12009D36A5 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,9 @@
 		C018251224902CBF0046CBAB /* KaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaderUITests.swift; sourceTree = "<group>"; };
 		C018251424902CBF0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
+		C098C8E524913AE500B50E21 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				C0EE37B82490CAE5009D36A5 /* TodoItem.swift */,
+				C098C8E524913AE500B50E21 /* CategoryItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 		C0EE37BB2490CB47009D36A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */,
 				C018252024902E620046CBAB /* TodoListTableViewController.swift */,
 			);
 			path = Controllers;
@@ -288,7 +294,9 @@
 			files = (
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
 				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
+				C0EE37BE24911E12009D36A5 /* CategoryTableViewController.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
+				C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */,
 				C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

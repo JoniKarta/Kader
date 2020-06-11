@@ -11,7 +11,13 @@ import UIKit
 class TodoListTableViewController: UITableViewController {
 
     var todoListArray:[TodoItem] = [TodoItem]()
-    
+   
+    var selectedCategory: CategoryItem? {
+        didSet {
+            // load the data from firestore
+            print(selectedCategory ?? CategoryItem(title: "only for testing"))
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let item1: TodoItem = TodoItem(task: "Clean the wall")
@@ -92,7 +98,7 @@ extension TodoListTableViewController : UISearchBarDelegate {
         // Get the values from the firebase
         // Update the todoListArray
         // Notify the table of the changes
-        
+        // DON'T FORGET TO ADD RELOAD DATA 
         for item in todoListArray {
             if item.task.contains(searchBar.text!){
                 print(item.task)
