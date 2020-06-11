@@ -25,10 +25,7 @@ class CategoryTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    
-
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return categotyList.count
     }
     
@@ -37,18 +34,15 @@ class CategoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
         cell.textLabel?.text = categotyList[indexPath.row].title
-       // let currentSelectedTask = categotyList[indexPath.row]
-        
         return cell
     }
     
-    // Handle the selection of a single item
+    // Segue to TodoListTableViewController while pressing on a single category item
        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           
           performSegue(withIdentifier: "todoListItems", sender: self)
        }
     
-    
+    // Preperation for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! TodoListTableViewController
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -56,6 +50,8 @@ class CategoryTableViewController: UITableViewController {
         }
     }
    
+    // MARK: - ADD NEW CATEGORY TO THE LIST
+    
     @IBAction func category_BTN_add(_ sender: UIBarButtonItem) {
     var newTaskTextField = UITextField()
           let addItemDialog = UIAlertController(title: "Add new categoty for the team", message:"", preferredStyle: .alert)

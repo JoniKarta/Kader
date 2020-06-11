@@ -18,6 +18,8 @@
 		C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C098C8E524913AE500B50E21 /* CategoryItem.swift */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */; };
+		C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710B24924B8D00B3C37D /* LoginViewController.swift */; };
+		C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710D24924BA400B3C37D /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		C098C8E524913AE500B50E21 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		C0F4710B24924B8D00B3C37D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C0F4710D24924BA400B3C37D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 			children = (
 				C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */,
 				C018252024902E620046CBAB /* TodoListTableViewController.swift */,
+				C0F4710B24924B8D00B3C37D /* LoginViewController.swift */,
+				C0F4710D24924BA400B3C37D /* RegisterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -292,8 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
 				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
+				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* CategoryTableViewController.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
 				C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */,
