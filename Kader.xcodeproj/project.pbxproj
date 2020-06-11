@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12B221463C4EE53427A6F336 /* Pods_Kader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826D5770BB4B14533750AD7F /* Pods_Kader.framework */; };
 		C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01824F024902CBD0046CBAB /* AppDelegate.swift */; };
 		C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01824F224902CBD0046CBAB /* SceneDelegate.swift */; };
 		C01824F824902CBD0046CBAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01824F624902CBD0046CBAB /* Main.storyboard */; };
 		C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01824F924902CBE0046CBAB /* Assets.xcassets */; };
 		C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */; };
-		C018250824902CBF0046CBAB /* KaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018250724902CBF0046CBAB /* KaderTests.swift */; };
-		C018251324902CBF0046CBAB /* KaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018251224902CBF0046CBAB /* KaderUITests.swift */; };
 		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
 		C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C098C8E524913AE500B50E21 /* CategoryItem.swift */; };
+		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */; };
 		C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710B24924B8D00B3C37D /* LoginViewController.swift */; };
@@ -40,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14B944F0FA528ED7CF4041E6 /* Pods-Kader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kader.release.xcconfig"; path = "Target Support Files/Pods-Kader/Pods-Kader.release.xcconfig"; sourceTree = "<group>"; };
+		1C5310FDBE6DCA7FD4A20083 /* Pods-Kader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kader.debug.xcconfig"; path = "Target Support Files/Pods-Kader/Pods-Kader.debug.xcconfig"; sourceTree = "<group>"; };
+		826D5770BB4B14533750AD7F /* Pods_Kader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01824ED24902CBD0046CBAB /* Kader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01824F024902CBD0046CBAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C01824F224902CBD0046CBAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,13 +51,10 @@
 		C01824FC24902CBE0046CBAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C01824FE24902CBE0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C018250324902CBE0046CBAB /* KaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C018250724902CBF0046CBAB /* KaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaderTests.swift; sourceTree = "<group>"; };
-		C018250924902CBF0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C018250E24902CBF0046CBAB /* KaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C018251224902CBF0046CBAB /* KaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaderUITests.swift; sourceTree = "<group>"; };
-		C018251424902CBF0046CBAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		C098C8E524913AE500B50E21 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		C0F4710B24924B8D00B3C37D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12B221463C4EE53427A6F336 /* Pods_Kader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +87,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2061632B938FBD8C4A1475A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				826D5770BB4B14533750AD7F /* Pods_Kader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45770240835EAED1CC011A01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C5310FDBE6DCA7FD4A20083 /* Pods-Kader.debug.xcconfig */,
+				14B944F0FA528ED7CF4041E6 /* Pods-Kader.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C01824E424902CBD0046CBAB = {
 			isa = PBXGroup;
 			children = (
 				C01824EF24902CBD0046CBAB /* Kader */,
-				C018250624902CBF0046CBAB /* KaderTests */,
-				C018251124902CBF0046CBAB /* KaderUITests */,
 				C01824EE24902CBD0046CBAB /* Products */,
+				45770240835EAED1CC011A01 /* Pods */,
+				2061632B938FBD8C4A1475A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,26 +135,9 @@
 				C01824F924902CBE0046CBAB /* Assets.xcassets */,
 				C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */,
 				C01824FE24902CBE0046CBAB /* Info.plist */,
+				C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */,
 			);
 			path = Kader;
-			sourceTree = "<group>";
-		};
-		C018250624902CBF0046CBAB /* KaderTests */ = {
-			isa = PBXGroup;
-			children = (
-				C018250724902CBF0046CBAB /* KaderTests.swift */,
-				C018250924902CBF0046CBAB /* Info.plist */,
-			);
-			path = KaderTests;
-			sourceTree = "<group>";
-		};
-		C018251124902CBF0046CBAB /* KaderUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C018251224902CBF0046CBAB /* KaderUITests.swift */,
-				C018251424902CBF0046CBAB /* Info.plist */,
-			);
-			path = KaderUITests;
 			sourceTree = "<group>";
 		};
 		C0EE37BA2490CAE9009D36A5 /* Model */ = {
@@ -174,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C018251724902CBF0046CBAB /* Build configuration list for PBXNativeTarget "Kader" */;
 			buildPhases = (
+				70F35F8497D894DE8E65B6E1 /* [CP] Check Pods Manifest.lock */,
 				C01824E924902CBD0046CBAB /* Sources */,
 				C01824EA24902CBD0046CBAB /* Frameworks */,
 				C01824EB24902CBD0046CBAB /* Resources */,
+				3D356C638B8277084E1B709B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */,
+				C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */,
 				C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */,
 				C01824F824902CBD0046CBAB /* Main.storyboard in Resources */,
 			);
@@ -293,6 +297,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D356C638B8277084E1B709B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kader/Pods-Kader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kader/Pods-Kader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kader/Pods-Kader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70F35F8497D894DE8E65B6E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kader-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C01824E924902CBD0046CBAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -313,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C018250824902CBF0046CBAB /* KaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C018251324902CBF0046CBAB /* KaderUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +520,7 @@
 		};
 		C018251824902CBF0046CBAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C5310FDBE6DCA7FD4A20083 /* Pods-Kader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,7 +529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.Kader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathankarta.Kader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -493,6 +538,7 @@
 		};
 		C018251924902CBF0046CBAB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14B944F0FA528ED7CF4041E6 /* Pods-Kader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -501,7 +547,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.Kader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathankarta.Kader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFl-kX-Rah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2596" y="-72"/>
+            <point key="canvasLocation" x="-2597" y="779"/>
         </scene>
         <!--My Group List-->
         <scene sceneID="guW-4f-xqj">
@@ -95,7 +95,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYX-s5-iuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3713" y="-467"/>
+            <point key="canvasLocation" x="-3848" y="364"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXz-OD-Tli">
@@ -117,12 +117,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ur-01-wsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5623" y="-165"/>
+            <point key="canvasLocation" x="-5925" y="-165"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="3DD-bY-tKp">
             <objects>
-                <viewController id="ChE-SZ-yei" customClass="LoginViewController" customModule="Flash_Chat_iOS13" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ChE-SZ-yei" customClass="LoginViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QqO-od-gC6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="1sl-yD-cJT" kind="show" id="xEr-sf-seQ"/>
+                                                    <segue destination="1sl-yD-cJT" kind="show" identifier="LoginToGroupList" id="xEr-sf-seQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -198,7 +198,7 @@
                                                             <color key="titleColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="LoC-Pj-V2W" kind="show" id="9Ag-cv-GrY"/>
+                                                            <segue destination="LoC-Pj-V2W" kind="show" identifier="SignUpToRegister" id="9Ag-cv-GrY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuS-gO-z2F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4797" y="-165"/>
+            <point key="canvasLocation" x="-5035" y="-165"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="bB6-Rp-b6N">
@@ -282,6 +282,9 @@
                                                         <state key="normal" title="Register">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="register_BTN_regiseration:" destination="LoC-Pj-V2W" eventType="touchUpInside" id="ewd-G3-jmm"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
@@ -323,10 +326,16 @@
                         <viewLayoutGuide key="safeArea" id="4BP-U8-RQQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ypq-z2-Gbj"/>
+                    <connections>
+                        <outlet property="register_TEXTVIEW_confirm" destination="uQY-fv-JMT" id="Fkw-O9-gGJ"/>
+                        <outlet property="register_TEXTVIEW_email" destination="lt1-H5-z33" id="P7G-Pi-d8u"/>
+                        <outlet property="register_TEXTVIEW_password" destination="7b1-Ks-GA5" id="AL1-J3-6Bc"/>
+                        <segue destination="1sl-yD-cJT" kind="show" identifier="RegisterToGroupList" id="vi5-ct-asP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPI-8R-PRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3713" y="208"/>
+            <point key="canvasLocation" x="-3849" y="-607"/>
         </scene>
         <!--Join To New Group-->
         <scene sceneID="cs6-JE-uJf">
@@ -371,9 +380,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDM-JM-aC6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2597" y="-899"/>
+            <point key="canvasLocation" x="-2597" y="-21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vi5-ct-asP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="applogo" width="398.33334350585938" height="708.33331298828125"/>
         <image name="registerHeader" width="2666.666748046875" height="1500"/>
