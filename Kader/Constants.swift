@@ -13,11 +13,16 @@ struct K {
     static let appName = "Kader"
     static let registerSegue  = "RegisterToGroupList"
     static let loginSegue = "LoginToGroupList"
+    static let taskSegue = "TaskItems"
+    static let searchGroupSegue = "CustomizeGroups"
     
-    
-    
+    static let cellReusableItem = "CellTodoItem"
+    static let cellReusableGroup = "CellGroupItem"
+    static let cellReusableSelectedGroup = "CellGroupSelectedItem"
     struct FireStore {
-        static let usersCollectionName = "Users"
+        static let usersCollection = "Users"
+        static let groupsCollection = "Groups"
         
     }
 }
+

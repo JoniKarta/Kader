@@ -12,10 +12,10 @@ class TodoListTableViewController: UITableViewController {
 
     var todoListArray:[TodoItem] = [TodoItem]()
    
-    var selectedCategory: CategoryItem? {
+    var group: Group? {
         didSet {
             // load the data from firestore
-            print(selectedCategory ?? CategoryItem(title: "only for testing"))
+            print(group ?? CategoryItem(title: "only for testing"))
         }
     }
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class TodoListTableViewController: UITableViewController {
     
     // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableItem, for: indexPath)
         
         cell.textLabel?.text = todoListArray[indexPath.row].task
         let currentSelectedTask = todoListArray[indexPath.row]

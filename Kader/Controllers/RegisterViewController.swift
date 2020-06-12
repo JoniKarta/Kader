@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
                 }else{
                     do {
                         let user = User(userEmail: email)
-                        try self.db.collection(K.FireStore.usersCollectionName).document(email).setData(from: user)
+                        try self.db.collection(K.FireStore.usersCollection).document(email).setData(from: user)
                     } catch let error {
                         print("\(error)")
                     }
