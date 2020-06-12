@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TodoItem {
+class TodoItem: Codable{
     
     var task: String = ""
     var isSelected : Bool = false

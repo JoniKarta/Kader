@@ -8,4 +8,5 @@ target 'Kader' do
   # Pods for Kader
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 end
