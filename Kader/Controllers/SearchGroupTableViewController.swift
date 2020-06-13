@@ -9,10 +9,13 @@
 import UIKit
 
 class SearchGroupTableViewController: UITableViewController {
-    
-    var groupList = ["Test1","Test2","Test3"]
+        
+    var groupList = [Group]()
+    var fbGroupService: FBGroupService!
     override func viewDidLoad() {
         super.viewDidLoad()
+        fbGroupService = FBGroupService(callback: self)
+        fbGroupService.getAllGroups()
 
     }
 
@@ -25,10 +28,18 @@ class SearchGroupTableViewController: UITableViewController {
     // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableGroup, for: indexPath)
-        
+        cell.textLabel?.text = groupList[indexPath.row].groupName
         return cell
     }
+}
 
+extension SearchGroupTableViewController : GroupCallback {
+    func onFinish(group: [Group]) {
+        if !group.isEmpty {
+            self.groupList = group
+            self.tableView.reloadData()
+        }
+    }
     
-
+    
 }
