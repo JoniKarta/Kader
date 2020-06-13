@@ -63,6 +63,10 @@ class FirebaseFirestoreGroupService {
     }
     
     func getFilteredGroups(user: User){
+        if user.selectedGroupsList.isEmpty{
+            print("There was the problem")
+            return
+        }
         db.collection(K.FireStore.groupsCollection)
             .whereField("groupName", in: user.selectedGroupsList)
             .getDocuments() { querySnapshot, error in
