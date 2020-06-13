@@ -34,13 +34,36 @@ class FBGroupService {
         }
     }
     
-    func getFilteredGroups(selectedGroupList: [String]){
-        if selectedGroupList.isEmpty {
-            return
+    func onUserGroupListChangeListener(user: User){
+        db.collection(K.FireStore.usersCollection)
+            .document(user.userEmail)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success(let user):
+                    if let user = user {
+                        self.getFilteredGroups(user: user)
+                    } else {
+                        print("Document does not exist")
+                    }
+                case .failure(let error):
+                    print("Error decoding group: \(error)")
+            }
         }
-        let docsRef = db.collection(K.FireStore.groupsCollection)
-        docsRef.whereField("groupName", in: selectedGroupList)
-            .addSnapshotListener { querySnapshot, error in
+    }
+    
+    func getFilteredGroups(user: User){
+        db.collection(K.FireStore.groupsCollection)
+            .whereField("groupName", in: user.selectedGroupsList)
+            .getDocuments() { querySnapshot, error in
+                print(user.selectedGroupsList)
+                self.groupList = []
                 if let error = error {
                     print("Error retreiving collection: \(error)")
                 }else{
@@ -68,7 +91,8 @@ class FBGroupService {
     func getAllGroups(){
         db.collection(K.FireStore.groupsCollection)
             .order(by: "groupName",descending: true)
-            .getDocuments() { (querySnapshot, err) in
+            .addSnapshotListener { (querySnapshot, err) in
+            self.groupList = []
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -91,11 +115,15 @@ class FBGroupService {
         }
     }
     
+    
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
             .document(user.userEmail).updateData(["selectedGroupsList": FieldValue.arrayUnion([group.groupName])])
     }
     
+    
+    
+    // Need
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.usersCollection)
             .whereField("groupName", isGreaterThanOrEqualTo: name)

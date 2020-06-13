@@ -18,7 +18,9 @@ class TodoListTableViewController: UITableViewController{
         super.viewDidLoad()
         fbItemService = FBItemService(callback: self)
         fbItemService.getAllTodoItem(group: group)
+        print("TodoListTableViewController")
     }
+  
     
     // MARK: - Table view data source
     
@@ -95,7 +97,9 @@ extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
         if !itemList.isEmpty {
             self.todoListArray = itemList
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 }

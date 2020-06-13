@@ -19,8 +19,7 @@ class MyGroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbService = FBGroupService(callback: self)
-        fbService.getFilteredGroups(selectedGroupList: user.selectedGroupsList)
-        
+        fbService.onUserGroupListChangeListener(user: user)
     }
     
     // MARK: - Table view data source
@@ -45,12 +44,13 @@ class MyGroupTableViewController: UITableViewController {
     // Preperation for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.taskSegue {
-            let destinationVC = segue.destination as! TodoListTableViewController
+            let destinationController = segue.destination as! TodoListTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
-                destinationVC.group = groupList[indexPath.row]
+                destinationController.group = groupList[indexPath.row]
             }
         }else if segue.identifier == K.searchGroupSegue {
-            
+            let destinationController = segue.destination as! SearchGroupTableViewController
+            destinationController.user = self.user
         }
         
     }
@@ -62,10 +62,10 @@ class MyGroupTableViewController: UITableViewController {
         let addItemDialog = UIAlertController(title: "Add new group to schedule your missions", message:"", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Group" , style: .default) { (action) in
-            let newGroup = Group(groupName: newTaskTextField.text!, creator: "Jonathan@gmail.com")
+            let newGroup = Group(groupName: newTaskTextField.text!, creator: self.user.userEmail)
             self.groupList.append(newGroup)
-            self.fbService.setGroup(newGroup: newGroup)
             self.fbService.appendGroupToUser(user: self.user, group: newGroup)
+            self.fbService.setGroup(newGroup: newGroup)
             self.tableView.reloadData()
         }
         
@@ -83,7 +83,10 @@ extension MyGroupTableViewController: GroupCallback {
     func onFinish(group: [Group]) {
         if !group.isEmpty {
             self.groupList = group
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
         }
     }
 }

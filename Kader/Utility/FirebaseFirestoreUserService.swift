@@ -35,7 +35,7 @@ class FBUserService {
     func getUser(userEmail: String){
         let docRef = db.collection(K.FireStore.usersCollection).document(userEmail)
         
-        docRef.getDocument { (document, error ) in
+        docRef.getDocument() { (document, error ) in
             let result = Result {
                 try document?.data(as: User.self)
             }
@@ -50,6 +50,27 @@ class FBUserService {
                 print("Error decoding item: \(error)")
             }
         }
+    }
+    
+    func onUserGroupsChangedListener(userEmail: String) {
+    let docRef = db.collection(K.FireStore.usersCollection).document(userEmail)
+    
+        docRef.addSnapshotListener {(document, error ) in
+        let result = Result {
+            try document?.data(as: User.self)
+        }
+        switch result {
+        case .success(let user):
+            if let user = user {
+                self.callback?.onFinish(user: user)
+            } else {
+                print("Document does not exist")
+            }
+        case .failure(let error):
+            print("Error decoding item: \(error)")
+        }
+    }
+        
     }
     
 }

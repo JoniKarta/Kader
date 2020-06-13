@@ -200,7 +200,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="organize" id="0DR-aH-jh5">
                                 <connections>
-                                    <segue destination="spF-Lu-bd0" kind="show" id="4cB-F8-FJ9"/>
+                                    <segue destination="spF-Lu-bd0" kind="show" identifier="CustomizeGroups" id="4cB-F8-FJ9"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -387,7 +387,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nhd-3c-szX"/>
+        <segue reference="hpl-R4-t5v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="applogo" width="398.33334350585938" height="708.33331298828125"/>
