@@ -11,11 +11,13 @@ import Firebase
 
 class LoginViewController: UIViewController {
     let db = Firestore.firestore()
-    
+    var user: User!
+    var fbUserService: FBUserService!
     @IBOutlet weak var login_TEXTVIEW_email: UITextField!
     @IBOutlet weak var login_TEXTVIEW_password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        fbUserService = FBUserService(callback: self)
     }
     
     // MARK: - Login using firebase
@@ -26,15 +28,30 @@ class LoginViewController: UIViewController {
                 if let err = error {
                     self.displayAlertDialog(title: "Error", message: err.localizedDescription)
                 }else{
-                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                    self.fbUserService.getUser(userEmail: email)
                 }
             }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.loginSegue {
+            let destinationController = segue.destination as! MyGroupTableViewController
+            destinationController.user = self.user
+        }
+    }
     func displayAlertDialog(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alert, animated: true, completion:nil)
     }
+}
+
+extension LoginViewController: UserCallback {
+    func onFinish(user: User) {
+        self.user = user
+        self.performSegue(withIdentifier: K.loginSegue, sender: self)
+    }
+    
+    
 }

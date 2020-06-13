@@ -35,6 +35,9 @@ class FBGroupService {
     }
     
     func getFilteredGroups(selectedGroupList: [String]){
+        if selectedGroupList.isEmpty {
+            return
+        }
         let docsRef = db.collection(K.FireStore.groupsCollection)
         docsRef.whereField("groupName", in: selectedGroupList)
             .addSnapshotListener { querySnapshot, error in
@@ -90,7 +93,7 @@ class FBGroupService {
     
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
-            .document(user.userEmail).updateData(["groupList": FieldValue.arrayUnion([group.groupName])])
+            .document(user.userEmail).updateData(["selectedGroupsList": FieldValue.arrayUnion([group.groupName])])
     }
     
     func getGroupFilteredByName(name: String) {
@@ -121,4 +124,5 @@ class FBGroupService {
                 }
         }
     }
+    
 }

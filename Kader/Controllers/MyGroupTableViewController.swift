@@ -15,13 +15,11 @@ class MyGroupTableViewController: UITableViewController {
     let db = Firestore.firestore()
     var groupList = [Group]()
     var fbService: FBGroupService!
-    
+    var user : User!
     override func viewDidLoad() {
         super.viewDidLoad()
         fbService = FBGroupService(callback: self)
-        let user =  User(userEmail: "Jonathan@gmail.com")
-        user.selectedGroupsList = ["Test1", "Test3", "Test4", "Test5" ]
-        self.fbService.getFilteredGroups(selectedGroupList: user.selectedGroupsList)
+        fbService.getFilteredGroups(selectedGroupList: user.selectedGroupsList)
         
     }
     
@@ -67,7 +65,7 @@ class MyGroupTableViewController: UITableViewController {
             let newGroup = Group(groupName: newTaskTextField.text!, creator: "Jonathan@gmail.com")
             self.groupList.append(newGroup)
             self.fbService.setGroup(newGroup: newGroup)
-            // self.fbService.appendGroupToUser(user: self.user, group: <#T##Group#>)
+            self.fbService.appendGroupToUser(user: self.user, group: newGroup)
             self.tableView.reloadData()
         }
         

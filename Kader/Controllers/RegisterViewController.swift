@@ -15,9 +15,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var register_TEXTVIEW_confirm: UITextField!
     @IBOutlet weak var register_TEXTVIEW_password: UITextField!
     let db = Firestore.firestore()
+    var fbUserService: FBUserService!
+    var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fbUserService = FBUserService(callback: self)
     }
     
     //MARK: - Register using firebase
@@ -33,21 +35,26 @@ class RegisterViewController: UIViewController {
                 if let err = error {
                     self.displayAlertDialog(title: "Error", message: err.localizedDescription)
                 }else{
-                    do {
-                        let user = User(userEmail: email)
-                        try self.db.collection(K.FireStore.usersCollection).document(email).setData(from: user)
-                    } catch let error {
-                        print("\(error)")
-                    }
-                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                    self.user = User(userEmail: email)
+                    self.fbUserService.setUser(user: self.user)
                 }
             }
         }
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.registerSegue {
+            let destinationController = segue.destination as! MyGroupTableViewController
+            destinationController.user = self.user
+        }
+    }
     func displayAlertDialog(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alert, animated: true, completion:nil)
+    }
+}
+extension RegisterViewController: UserCallback {
+    func onFinish(user: User) {
+        self.performSegue(withIdentifier: K.registerSegue, sender: self)
     }
 }
