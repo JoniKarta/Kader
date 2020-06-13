@@ -17,7 +17,7 @@ protocol ItemCallback {
 class FBItemService {
     let db = Firestore.firestore()
     let callback : ItemCallback?
-    
+    var itemList = [TodoItem]()
     init(callback: ItemCallback){
         self.callback = callback
     }
@@ -43,8 +43,21 @@ class FBItemService {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
+                        let result = Result {
+                            try document.data(as: TodoItem.self)
+                        }
+                        switch result {
+                        case .success(let todoItem):
+                            if let item = todoItem {
+                                self.itemList.append(item)
+                            } else {
+                                print("Document does not exist")
+                            }
+                        case .failure(let error):
+                            print("Error decoding item: \(error)")
+                        }
                     }
+                    self.callback?.onFinish(itemList: self.itemList)
                 }
         }
     }
