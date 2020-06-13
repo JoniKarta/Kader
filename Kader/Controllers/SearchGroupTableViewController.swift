@@ -12,13 +12,13 @@ class SearchGroupTableViewController: UITableViewController {
         
     var groupList = [Group]()
     var user: User!
-    var fbGroupService: FBGroupService!
-    var fbUserService: FBUserService!
+    var fbGroupService: FirebaseFirestoreGroupService!
+    var fbUserService: FirebaseFirestoreUserService!
     var userSelectedGroupList = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbGroupService = FBGroupService(callback: self)
-        fbUserService = FBUserService(callback: self)
+        fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
+        fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
         fbGroupService.getAllGroups()
         fbUserService.onUserGroupsChangedListener(userEmail: user.userEmail)
     }

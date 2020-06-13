@@ -12,12 +12,12 @@ import Firebase
 class LoginViewController: UIViewController {
     let db = Firestore.firestore()
     var user: User!
-    var fbUserService: FBUserService!
+    var fbUserService: FirebaseFirestoreUserService!
     @IBOutlet weak var login_TEXTVIEW_email: UITextField!
     @IBOutlet weak var login_TEXTVIEW_password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbUserService = FBUserService(callback: self)
+        fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
     }
     
     // MARK: - Login using firebase

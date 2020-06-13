@@ -24,6 +24,7 @@
 		C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */; };
 		C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */; };
 		C0F324F82494E71700B86691 /* FirebaseFirestoreUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F72494E71700B86691 /* FirebaseFirestoreUserService.swift */; };
+		C0F324FA24955E5000B86691 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F924955E5000B86691 /* Alert.swift */; };
 		C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710B24924B8D00B3C37D /* LoginViewController.swift */; };
 		C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710D24924BA400B3C37D /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreGroupService.swift; sourceTree = "<group>"; };
 		C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreItemService.swift; sourceTree = "<group>"; };
 		C0F324F72494E71700B86691 /* FirebaseFirestoreUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreUserService.swift; sourceTree = "<group>"; };
+		C0F324F924955E5000B86691 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C0F4710B24924B8D00B3C37D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0F4710D24924BA400B3C37D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */,
 				C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */,
 				C0F324F72494E71700B86691 /* FirebaseFirestoreUserService.swift */,
+				C0F324F924955E5000B86691 /* Alert.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */,
 				C0A36C1624931F5F006AEBFE /* Group.swift in Sources */,
 				C019A1F724937F5000BFBF7B /* Constants.swift in Sources */,
+				C0F324FA24955E5000B86691 /* Alert.swift in Sources */,
 				C0F324F82494E71700B86691 /* FirebaseFirestoreUserService.swift in Sources */,
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,

@@ -14,14 +14,16 @@ protocol ItemCallback {
     func onFinish(itemList: [TodoItem])
 }
 
-class FBItemService {
+class FirebaseFirestoreItemService {
     let db = Firestore.firestore()
     let callback : ItemCallback?
     var itemList = [TodoItem]()
-    init(callback: ItemCallback){
+    var vc : UIViewController
+    init(vc: UIViewController, callback: ItemCallback){
         self.callback = callback
+        self.vc = vc
     }
-
+    
     func setTodoItem(newGroup: Group, todoItem: TodoItem){
         do{
             try  db.collection(K.FireStore.groupsCollection)
@@ -29,7 +31,7 @@ class FBItemService {
                 .collection(K.FireStore.tasksCollection)
                 .document().setData(from: todoItem)
         }catch let error {
-            print("\(error)")
+            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
         }
     }
     
@@ -40,7 +42,7 @@ class FBItemService {
             .collection(K.FireStore.tasksCollection)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("Error getting documents: \(err)")
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
                 } else {
                     for document in querySnapshot!.documents {
                         let result = Result {
@@ -51,10 +53,10 @@ class FBItemService {
                             if let item = todoItem {
                                 self.itemList.append(item)
                             } else {
-                                print("Document does not exist")
+                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: err))")
                             }
                         case .failure(let error):
-                            print("Error decoding item: \(error)")
+                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                         }
                     }
                     self.callback?.onFinish(itemList: self.itemList)

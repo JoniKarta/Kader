@@ -11,12 +11,12 @@ import UIKit
 class TodoListTableViewController: UITableViewController{
     
     var todoListArray:[TodoItem] = [TodoItem]()
-    var fbItemService : FBItemService!
+    var fbItemService : FirebaseFirestoreItemService!
     var group: Group!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbItemService = FBItemService(callback: self)
+        fbItemService = FirebaseFirestoreItemService(vc: self, callback: self)
         fbItemService.getAllTodoItem(group: group)
         print("TodoListTableViewController")
     }

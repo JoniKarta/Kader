@@ -14,11 +14,11 @@ class MyGroupTableViewController: UITableViewController {
     
     let db = Firestore.firestore()
     var groupList = [Group]()
-    var fbService: FBGroupService!
+    var fbService: FirebaseFirestoreGroupService!
     var user : User!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbService = FBGroupService(callback: self)
+        fbService = FirebaseFirestoreGroupService(vc: self, callback: self)
         fbService.onUserGroupListChangeListener(user: user)
     }
     

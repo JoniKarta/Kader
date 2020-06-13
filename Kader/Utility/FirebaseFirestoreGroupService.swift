@@ -14,32 +14,36 @@ protocol GroupCallback {
     func onFinish(group: [Group])
 }
 
-class FBGroupService {
+class FirebaseFirestoreGroupService {
     let db = Firestore.firestore()
     let callback : GroupCallback?
+    let vc : UIViewController
     var groupList : [Group] = [Group]()
     
-    init(callback: GroupCallback){
+    init(vc: UIViewController , callback: GroupCallback){
         self.callback = callback
+        self.vc = vc
     }
     
+    //MARK: - ADD GROUP
     func setGroup(newGroup: Group){
         let docRef =  db.collection(K.FireStore.groupsCollection).document(newGroup.groupName)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                print("This document is already exists")
+                Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
             } else {
                 docRef.setData(["groupName": newGroup.groupName, "creator":    newGroup.getCreator()])
             }
         }
     }
     
+    // MARK: - USER GROUP LIST LISTENER
     func onUserGroupListChangeListener(user: User){
         db.collection(K.FireStore.usersCollection)
             .document(user.userEmail)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
                     return
                 }
                 let result = Result {
@@ -50,11 +54,11 @@ class FBGroupService {
                     if let user = user {
                         self.getFilteredGroups(user: user)
                     } else {
-                        print("Document does not exist")
+                        Alert.displayAlertDialog(on: self.vc, title: "User Not Found", message: "Could not found the user")
                     }
                 case .failure(let error):
-                    print("Error decoding group: \(error)")
-            }
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                }
         }
     }
     
@@ -65,7 +69,7 @@ class FBGroupService {
                 print(user.selectedGroupsList)
                 self.groupList = []
                 if let error = error {
-                    print("Error retreiving collection: \(error)")
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                 }else{
                     for document in querySnapshot!.documents {
                         let result = Result {
@@ -76,10 +80,10 @@ class FBGroupService {
                             if let group = group {
                                 self.groupList.append(group)
                             } else {
-                                print("Document does not exist")
+                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
                             }
                         case .failure(let error):
-                            print("Error decoding group: \(error)")
+                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                         }
                     }
                     self.callback?.onFinish(group: self.groupList)
@@ -88,16 +92,17 @@ class FBGroupService {
         
     }
     
+    //MARK: - FETCH ALL GROUP ORDERED BY GROUP NAME
     func getAllGroups(){
         db.collection(K.FireStore.groupsCollection)
             .order(by: "groupName",descending: true)
-            .addSnapshotListener { (querySnapshot, err) in
-            self.groupList = []
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let result = Result {
+            .addSnapshotListener { (querySnapshot, error) in
+                self.groupList = []
+                if let error = error {
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let result = Result {
                             try document.data(as: Group.self)
                         }
                         switch result {
@@ -105,17 +110,17 @@ class FBGroupService {
                             if let group = group {
                                 self.groupList.append(group)
                             } else {
-                                print("Document does not exist")
+                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
                             }
                         case .failure(let error):
-                            print("Error decoding group: \(error)")
+                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                         }
                     }
                     self.callback?.onFinish(group: self.groupList)                }
         }
     }
     
-    
+    //MARK: - APPEND GROUP TO USER
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
             .document(user.userEmail).updateData(["selectedGroupsList": FieldValue.arrayUnion([group.groupName])])
@@ -123,17 +128,17 @@ class FBGroupService {
     
     
     
-    // Need
+    //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.usersCollection)
             .whereField("groupName", isGreaterThanOrEqualTo: name)
-            .addSnapshotListener { (querySnapshot, error) in
-                if let err = error {
-                    print("There was an error \(err)")
+            .getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                 }else {
                     if let snapshotDocument = querySnapshot?.documents {
                         for document in snapshotDocument {
-                           let result = Result {
+                            let result = Result {
                                 try document.data(as: Group.self)
                             }
                             switch result {
@@ -141,10 +146,10 @@ class FBGroupService {
                                 if let group = group {
                                     self.groupList.append(group)
                                 } else {
-                                    print("Document does not exist")
+                                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
                                 }
                             case .failure(let error):
-                                print("Error decoding group: \(error)")
+                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                             }
                         }
                         self.callback?.onFinish(group: self.groupList)

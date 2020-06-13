@@ -15,11 +15,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var register_TEXTVIEW_confirm: UITextField!
     @IBOutlet weak var register_TEXTVIEW_password: UITextField!
     let db = Firestore.firestore()
-    var fbUserService: FBUserService!
+    var fbUserService: FirebaseFirestoreUserService!
     var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbUserService = FBUserService(callback: self)
+        fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
     }
     
     //MARK: - Register using firebase
