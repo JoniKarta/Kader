@@ -11,7 +11,7 @@ import Foundation
 class User: Codable, CustomStringConvertible{
     
     var userEmail: String = ""
-    var groupList: [String] = [String]()
+    var selectedGroupsList: [String] = [String]()
     
     init(userEmail: String) {
         self.userEmail = userEmail

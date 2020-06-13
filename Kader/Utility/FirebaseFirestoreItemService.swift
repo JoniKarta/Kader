@@ -21,9 +21,7 @@ class FBItemService {
     init(callback: ItemCallback){
         self.callback = callback
     }
-     
-    
-   
+
     func setTodoItem(newGroup: Group, todoItem: TodoItem){
         do{
             try  db.collection(K.FireStore.groupsCollection)
@@ -36,6 +34,7 @@ class FBItemService {
     }
     
     func getAllTodoItem(group: Group){
+        print("Get All Todo Item gets called")
         db.collection(K.FireStore.groupsCollection)
             .document(group.groupName)
             .collection(K.FireStore.tasksCollection)
@@ -47,6 +46,6 @@ class FBItemService {
                         print("\(document.documentID) => \(document.data())")
                     }
                 }
-            }
         }
+    }
 }

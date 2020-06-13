@@ -16,7 +16,6 @@
 		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
 		C019A1F724937F5000BFBF7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F624937F5000BFBF7B /* Constants.swift */; };
 		C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */; };
-		C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C098C8E524913AE500B50E21 /* CategoryItem.swift */; };
 		C0A36C1624931F5F006AEBFE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1524931F5F006AEBFE /* Group.swift */; };
 		C0A36C1824931FDE006AEBFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1724931FDE006AEBFE /* User.swift */; };
 		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
@@ -61,7 +60,6 @@
 		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		C019A1F624937F5000BFBF7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
-		C098C8E524913AE500B50E21 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		C0A36C1524931F5F006AEBFE /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C0A36C1724931FDE006AEBFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				C0EE37B82490CAE5009D36A5 /* TodoItem.swift */,
-				C098C8E524913AE500B50E21 /* CategoryItem.swift */,
 				C0A36C1524931F5F006AEBFE /* Group.swift */,
 				C0A36C1724931FDE006AEBFE /* User.swift */,
 			);
@@ -381,7 +378,6 @@
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
 				C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */,
-				C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */,
 				C0A36C1824931FDE006AEBFE /* User.swift in Sources */,
 				C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */,
 			);

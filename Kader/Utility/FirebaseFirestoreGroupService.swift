@@ -18,11 +18,11 @@ class FBGroupService {
     let db = Firestore.firestore()
     let callback : GroupCallback?
     var groupList : [Group] = [Group]()
-    let decoder = JSONDecoder()
     
     init(callback: GroupCallback){
         self.callback = callback
     }
+    
     func setGroup(newGroup: Group){
         let docRef =  db.collection(K.FireStore.groupsCollection).document(newGroup.groupName)
         docRef.getDocument { (document, error) in
@@ -31,18 +31,16 @@ class FBGroupService {
             } else {
                 docRef.setData(["groupName": newGroup.groupName, "creator":    newGroup.getCreator()])
             }
-            
         }
     }
     
-    func getFilteredGroups(groupList: [String]){
+    func getFilteredGroups(selectedGroupList: [String]){
         let docsRef = db.collection(K.FireStore.groupsCollection)
-        docsRef.whereField("groupName", in: groupList)
+        docsRef.whereField("groupName", in: selectedGroupList)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
                     print("Error retreiving collection: \(error)")
                 }else{
-                    
                     for document in querySnapshot!.documents {
                         let result = Result {
                             try document.data(as: Group.self)
@@ -51,12 +49,11 @@ class FBGroupService {
                         case .success(let group):
                             if let group = group {
                                 self.groupList.append(group)
-                                print("Group: \(group)")
                             } else {
                                 print("Document does not exist")
                             }
                         case .failure(let error):
-                            print("Error decoding city: \(error)")
+                            print("Error decoding group: \(error)")
                         }
                     }
                     self.callback?.onFinish(group: self.groupList)
@@ -76,57 +73,10 @@ class FBGroupService {
             }
         }
     }
-    func setTodoItem(newGroup: Group, todoItem: TodoItem){
-        do{
-            try  db.collection(K.FireStore.groupsCollection)
-                .document(newGroup.groupName)
-                .collection(K.FireStore.tasksCollection)
-                .document().setData(from: todoItem)
-        }catch let error {
-            print("\(error)")
-        }
-    }
-    
-    func getAllTodoItem(group: Group){
-        db.collection(K.FireStore.groupsCollection)
-            .document(group.groupName)
-            .collection(K.FireStore.tasksCollection)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-            }
-        }
-    
-    
-  
-    
-    
-    
-    func getAllTodoItemsFromGroup(group: Group){
-        db.collection(K.FireStore.groupsCollection)
-            .document(group.groupName)
-            .collection(K.FireStore.tasksCollection).getDocuments() {
-                (querySnapshot, err) in
-                if let err = err {
-                    print("Error occurred \(err)")
-                }else{
-                    for document in querySnapshot!.documents {
-                        print(document.data())
-                    }
-                }
-        }
-    }
-    
     
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
             .document(user.userEmail).updateData(["groupList": FieldValue.arrayUnion([group.groupName])])
-        
     }
     
 }

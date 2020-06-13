@@ -11,16 +11,13 @@ import Firebase
 
 class LoginViewController: UIViewController {
     let db = Firestore.firestore()
-
-    @IBOutlet weak var login_TEXTVIEW_email: UITextField!
     
+    @IBOutlet weak var login_TEXTVIEW_email: UITextField!
     @IBOutlet weak var login_TEXTVIEW_password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-
     // MARK: - Login using firebase
     
     @IBAction func login_BTN_log(_ sender: UIButton) {
@@ -32,16 +29,12 @@ class LoginViewController: UIViewController {
                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 }
             }
-            
         }
-        
     }
+    
     func displayAlertDialog(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alert, animated: true, completion:nil)
     }
-    
-   
-
 }

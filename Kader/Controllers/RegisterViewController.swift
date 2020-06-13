@@ -27,7 +27,6 @@ class RegisterViewController: UIViewController {
         if let email = register_TEXTVIEW_email.text, let password = register_TEXTVIEW_password.text, let confirm = register_TEXTVIEW_confirm.text {
             if password != confirm {
                 displayAlertDialog(title: "Oops..", message: "Your password dosen't match")
-              
                 return
             }
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -43,16 +42,12 @@ class RegisterViewController: UIViewController {
                     self.performSegue(withIdentifier: K.registerSegue, sender: self)
                 }
             }
-            
         }
     }
-    
-  
+
     func displayAlertDialog(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        present(alert, animated: true, completion:nil)    }
-    
-    
-    
+        present(alert, animated: true, completion:nil)
+    }
 }

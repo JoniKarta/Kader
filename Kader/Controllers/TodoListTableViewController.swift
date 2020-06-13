@@ -8,27 +8,16 @@
 
 import UIKit
 
-class TodoListTableViewController: UITableViewController {
-
+class TodoListTableViewController: UITableViewController{
+    
     var todoListArray:[TodoItem] = [TodoItem]()
-   
-    var group: Group? {
-        didSet {
-            // load the data from firestore
-            print(group ?? CategoryItem(title: "only for testing"))
-        }
-    }
+    var fbItemService : FBItemService!
+    var group: Group!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let item1: TodoItem = TodoItem(task: "Clean the wall")
-        let item2: TodoItem = TodoItem(task: "Clean the dishes")
-        let item3: TodoItem = TodoItem(task: "Massive work on the yard")
-        let item4: TodoItem = TodoItem(task: "Meeting")
-        todoListArray.append(item1)
-        todoListArray.append(item2)
-        todoListArray.append(item3)
-        todoListArray.append(item4)
-       
+        fbItemService = FBItemService(callback: self)
+        fbItemService.getAllTodoItem(group: group)
     }
     
     // MARK: - Table view data source
@@ -60,7 +49,7 @@ class TodoListTableViewController: UITableViewController {
         tableView.reloadData()
         // Handle the problem of selection a row and it flashes
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
     }
     
     // MARK: - Plus Bar Button action
@@ -72,14 +61,14 @@ class TodoListTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item" , style: .default) { (action) in
             // Create new todoItem
             let todoItem = TodoItem(task: newTaskTextField.text!)
-           
+            
+            self.fbItemService.setTodoItem(newGroup: self.group, todoItem: todoItem)
             // Add new item to the list
             self.todoListArray.append(todoItem)
-
             // Reload the data after its has been added
             self.tableView.reloadData()
         }
-       
+        
         addItemDialog.addTextField {
             (alertTextField) in alertTextField.placeholder = "Add new task for the team"
             newTaskTextField = alertTextField
@@ -94,17 +83,20 @@ class TodoListTableViewController: UITableViewController {
 extension TodoListTableViewController : UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // Query the firebase for a given seach
-        // Get the values from the firebase
-        // Update the todoListArray
-        // Notify the table of the changes
-        // DON'T FORGET TO ADD RELOAD DATA 
         for item in todoListArray {
             if item.task.contains(searchBar.text!){
                 print(item.task)
             }
-        }
-        
-        
+        } 
     }
 }
+
+extension TodoListTableViewController: ItemCallback{
+    func onFinish(itemList: [TodoItem]) {
+        if !itemList.isEmpty {
+            self.todoListArray = itemList
+            self.tableView.reloadData()
+        }
+    }
+}
+

@@ -23,7 +23,7 @@ struct K {
     struct FireStore {
         static let usersCollection = "Users"
         static let groupsCollection = "Groups"
-        static let tasksCollection = "Tasks" // Sub collection of Groups collection
+        static let tasksCollection = "Tasks" 
         static let userSubGroupCollection = "GroupList"
     }
 }
