@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Group: Codable {
+class Group: Codable, CustomStringConvertible {
+    
     
     var groupName: String = ""
     private var creator: String = ""
-    var itemList: [TodoItem] = [TodoItem]()
-    
+		    
     init(groupName: String, creator: String) {
         self.groupName = groupName
         self.creator = creator
@@ -21,5 +21,8 @@ class Group: Codable {
     
     func getCreator() -> String {
         return creator
+    }
+    public var description: String {
+        return "Group Name: \(self.groupName), Creator: \(self.creator)"
     }
 }

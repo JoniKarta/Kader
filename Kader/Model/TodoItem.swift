@@ -8,12 +8,16 @@
 
 import Foundation
 
-class TodoItem: Codable{
+class TodoItem: Codable, CustomStringConvertible{
     
     var task: String = ""
     var isSelected : Bool = false
     
     init(task: String) {
         self.task = task
+    }
+    
+    public var description: String {
+        return "Task: \(self.task), Selected State: \(self.isSelected)"
     }
 }

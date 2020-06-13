@@ -10,38 +10,27 @@ import UIKit
 import FirebaseFirestoreSwift
 import Firebase
 
-class MyGroupTableViewController: UITableViewController {
+class MyGroupTableViewController: UITableViewController, GroupCallback {
+    func onFinish(group: [Group]) {
+        if !group.isEmpty {
+            self.groupList = group
+            self.tableView.reloadData()
+
+        }
+    }
+    
+    
+   
+   
     let db = Firestore.firestore()
     var groupList = [Group]()
+    var fbService: FBGroupService!
+    
     override func viewDidLoad() {
-      
         super.viewDidLoad()
-        
-      
+        fbService = FBGroupService(callback: self)
     }
-
-    func loadRegisteredGroupsFromFirestore() {
-        
-    }
-    
-    func writeGroupToFirebase(newGroup: Group) {
-        do{
-            try db.collection(K.FireStore.groupsCollection).document(newGroup.groupName).setData(from: newGroup)
-        } catch let error {
-            print("Error writing group to firestore \(error)")
-        }
-    }
-    
-    func setGroupToUser(user: User, newGroup: Group) {
-        db.collection(K.FireStore.usersCollection).document(user.userEmail).updateData(["groupList" : newGroup]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            }else {
-                print("Document successfully updated")
-            }
-        }
-        
-    }
+   
     // MARK: - Table view data source
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,12 +73,12 @@ class MyGroupTableViewController: UITableViewController {
               // Create new todoItem
             let newGroup = Group(groupName: newTaskTextField.text!, creator: "Jonathan@gmail.com")
             self.groupList.append(newGroup)
-            //let user = User(userEmail: "Jonathan@gmail.com")
-            self.writeGroupToFirebase(newGroup: newGroup)
-            //self.setGroupToUser(user: user, newGroup: newGroup)
               // Add new item to the list
-
+            self.fbService.setGroup(newGroup: newGroup)
+            let group = ["Test1", "Test3", "Test7", "Test5"]
+            self.fbService.getFilteredGroups(groupList: group)
               // Reload the data after its has been added
+            
               self.tableView.reloadData()
           }
          

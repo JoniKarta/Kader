@@ -19,10 +19,12 @@ struct K {
     static let cellReusableItem = "CellTodoItem"
     static let cellReusableGroup = "CellGroupItem"
     static let cellReusableSelectedGroup = "CellGroupSelectedItem"
+    
     struct FireStore {
         static let usersCollection = "Users"
         static let groupsCollection = "Groups"
-        
+        static let tasksCollection = "Tasks" // Sub collection of Groups collection
+        static let userSubGroupCollection = "GroupList"
     }
 }
 

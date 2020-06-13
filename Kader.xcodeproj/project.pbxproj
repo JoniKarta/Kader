@@ -22,6 +22,8 @@
 		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */; };
+		C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */; };
+		C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */; };
 		C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710B24924B8D00B3C37D /* LoginViewController.swift */; };
 		C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710D24924BA400B3C37D /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
+		C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreGroupService.swift; sourceTree = "<group>"; };
+		C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreItemService.swift; sourceTree = "<group>"; };
 		C0F4710B24924B8D00B3C37D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0F4710D24924BA400B3C37D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +141,7 @@
 			children = (
 				C01824F024902CBD0046CBAB /* AppDelegate.swift */,
 				C01824F224902CBD0046CBAB /* SceneDelegate.swift */,
+				C0F324F62494A33C00B86691 /* Utility */,
 				C0EE37BB2490CB47009D36A5 /* Controllers */,
 				C0EE37BA2490CAE9009D36A5 /* Model */,
 				C0EE37BC2490CB5B009D36A5 /* Views */,
@@ -144,7 +149,6 @@
 				C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */,
 				C01824FE24902CBE0046CBAB /* Info.plist */,
 				C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */,
-				C019A1F624937F5000BFBF7B /* Constants.swift */,
 			);
 			path = Kader;
 			sourceTree = "<group>";
@@ -178,6 +182,16 @@
 				C01824F624902CBD0046CBAB /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C0F324F62494A33C00B86691 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C019A1F624937F5000BFBF7B /* Constants.swift */,
+				C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */,
+				C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */,
 				C0A36C1624931F5F006AEBFE /* Group.swift in Sources */,
 				C019A1F724937F5000BFBF7B /* Constants.swift in Sources */,
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
@@ -365,6 +380,7 @@
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
+				C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */,
 				C098C8E624913AE500B50E21 /* CategoryItem.swift in Sources */,
 				C0A36C1824931FDE006AEBFE /* User.swift in Sources */,
 				C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */,
