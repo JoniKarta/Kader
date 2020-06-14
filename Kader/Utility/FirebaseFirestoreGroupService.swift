@@ -20,6 +20,7 @@ class FirebaseFirestoreGroupService {
     let vc : UIViewController
     var user: User = User()
     var groupList : [Group] = [Group]()
+    var listener : ListenerRegistration?
     
     init(vc: UIViewController , callback: GroupCallback){
         self.callback = callback
@@ -39,28 +40,15 @@ class FirebaseFirestoreGroupService {
     }
     
     // MARK: - USER GROUP LIST LISTENER
-    func onUserGroupListChangeListener(user: User){
-        db.collection(K.FireStore.usersCollection)
+    func onUserGroupListChangeListener(user: User, isGroupFiltered: Bool){
+         listener =  db.collection(K.FireStore.usersCollection)
             .document(user.userEmail)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
                     return
                 }
-                let result = Result {
-                    try document.data(as: User.self)
-                }
-                switch result {
-                case .success(let user):
-                    if let user = user {
-                        self.user = user
-                        self.getFilteredGroups(user: user)
-                    } else {
-                        Alert.displayAlertDialog(on: self.vc, title: "User Not Found", message: "Could not found the user")
-                    }
-                case .failure(let error):
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-                }
+                self.userResultHandler(document: document,isGroupFilter: isGroupFiltered)
         }
     }
     
@@ -72,25 +60,12 @@ class FirebaseFirestoreGroupService {
             .whereField("uuid", in: user.groupListId)
             
             .getDocuments() { querySnapshot, error in
-                print(user.groupListId)
                 self.groupList = []
                 if let error = error {
                     Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                 }else{
                     for document in querySnapshot!.documents {
-                        let result = Result {
-                            try document.data(as: Group.self)
-                        }
-                        switch result {
-                        case .success(let group):
-                            if let group = group {
-                                self.groupList.append(group)
-                            } else {
-                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
-                            }
-                        case .failure(let error):
-                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-                        }
+                        self.groupResultHandler(document: document)
                     }
                     self.callback?.onFinish(user: user, group: self.groupList)
                 }
@@ -99,33 +74,22 @@ class FirebaseFirestoreGroupService {
     }
     
     //MARK: - FETCH ALL GROUP ORDERED BY GROUP NAME
-//    func getAllGroups(){
-//        db.collection(K.FireStore.groupsCollection)
-//            .order(by: "groupName",descending: true)
-//            .addSnapshotListener { (querySnapshot, error) in
-//                self.groupList = []
-//                if let error = error {
-//                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-//                } else {
-//                    for document in querySnapshot!.documents {
-//                        let result = Result {
-//                            try document.data(as: Group.self)
-//                        }
-//                        switch result {
-//                        case .success(let group):
-//                            if let group = group {
-//                                self.groupList.append(group)
-//                            } else {
-//                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
-//                            }
-//                        case .failure(let error):
-//                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-//                        }
-//                    }
-//                    self.callback?.onFinish(group: self.groupList)                }
-//        }
-//    }
-//
+    func getAllGroups(user: User){
+        db.collection(K.FireStore.groupsCollection)
+            .order(by: "groupName").getDocuments() { (querySnapshot, error) in
+            self.groupList = []
+            if let error = error {
+                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.groupResultHandler(document: document)
+                }
+                self.callback?.onFinish(user: user, group: self.groupList)
+            }
+        }        
+    }
+    
+    
     //MARK: - APPEND GROUP TO USER
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
@@ -136,32 +100,60 @@ class FirebaseFirestoreGroupService {
     
     //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
-        db.collection(K.FireStore.usersCollection)
+        db.collection(K.FireStore.groupsCollection)
             .whereField("groupName", isGreaterThanOrEqualTo: name)
             .getDocuments() { (querySnapshot, error) in
+                self.groupList = []
                 if let error = error {
                     Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                 }else {
                     if let snapshotDocument = querySnapshot?.documents {
                         for document in snapshotDocument {
-                            let result = Result {
-                                try document.data(as: Group.self)
-                            }
-                            switch result {
-                            case .success(let group):
-                                if let group = group {
-                                    self.groupList.append(group)
-                                } else {
-                                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
-                                }
-                            case .failure(let error):
-                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-                            }
+                            self.groupResultHandler(document: document)
                         }
                         self.callback?.onFinish(user: self.user, group: self.groupList)
                     }
                 }
         }
     }
+    
+    //MARK:- RESULTS HANDLER
+    
+    func groupResultHandler(document: QueryDocumentSnapshot) {
+        let result = Result {
+            try document.data(as: Group.self)
+        }
+        switch result {
+        case .success(let group):
+            if let group = group {
+                self.groupList.append(group)
+            }
+        case .failure(let error):
+            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+        }
+    }
+    
+    func userResultHandler(document: DocumentSnapshot, isGroupFilter: Bool){
+        let result = Result {
+            try document.data(as: User.self)
+        }
+        switch result {
+        case .success(let user):
+            if let user = user {
+                self.user = user
+                if isGroupFilter {
+                    self.getFilteredGroups(user: user)
+                }else {
+                    self.getAllGroups(user: user)
+                }
+            } else {
+                Alert.displayAlertDialog(on: self.vc, title: "User Not Found", message: "Could not found the user")
+            }
+        case .failure(let error):
+            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+        }
+        
+    }
+    
     
 }

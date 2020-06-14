@@ -191,6 +191,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Group List" id="krY-TY-hVP">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="sQS-h3-sH0">
+                            <connections>
+                                <action selector="groupview_BTN_logout:" destination="1sl-yD-cJT" id="dar-JK-Ics"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="QPR-cb-Lf6">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,6 +252,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="spF-Lu-bd0" id="h9a-xA-i0H"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellGroupItem" id="H1m-UK-XOA">

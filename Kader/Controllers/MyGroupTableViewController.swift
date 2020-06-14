@@ -14,12 +14,12 @@ class MyGroupTableViewController: UITableViewController {
     
     let db = Firestore.firestore()
     var groupList = [Group]()
-    var fbService: FirebaseFirestoreGroupService!
+    var fbGroupService: FirebaseFirestoreGroupService!
     var user : User!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbService = FirebaseFirestoreGroupService(vc: self, callback: self)
-        fbService.onUserGroupListChangeListener(user: user)
+        fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
+        fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: true)
     }
     
     // MARK: - Table view data source
@@ -55,7 +55,7 @@ class MyGroupTableViewController: UITableViewController {
         
     }
     
-    // MARK: - ADD NEW Group to the list
+    // MARK: - ADD GROUP
     
     @IBAction func mygroupview_BTN_addgroup(_ sender: UIBarButtonItem) {
         var newTaskTextField = UITextField()
@@ -63,8 +63,8 @@ class MyGroupTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Group" , style: .default) { (action) in
             let newGroup = Group(groupName: newTaskTextField.text!, creator: self.user.userEmail)
-            self.fbService.appendGroupToUser(user: self.user, group: newGroup)
-            self.fbService.setGroup(newGroup: newGroup)
+            self.fbGroupService.appendGroupToUser(user: self.user, group: newGroup)
+            self.fbGroupService.setGroup(newGroup: newGroup)
             self.tableView.reloadData()
         }
         
@@ -78,12 +78,23 @@ class MyGroupTableViewController: UITableViewController {
         addGroupAlertDialog.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         present(addGroupAlertDialog, animated: true, completion:nil)
     }
+    
+    
+    //MARK: - LOG OUT
+    @IBAction func groupview_BTN_logout(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+            fbGroupService.listener?.remove()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }    }
+    
 }
 
-
+    //MARK: - GROUP ON FINISH CALLBACK
 extension MyGroupTableViewController: GroupCallback {
     func onFinish(user: User, group: [Group]) {
-        print("on Finish gets called from MyGroupTableViewController")
         if !group.isEmpty {
             self.groupList = group
             DispatchQueue.main.async {

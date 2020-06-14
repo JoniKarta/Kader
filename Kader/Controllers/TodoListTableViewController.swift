@@ -80,17 +80,13 @@ class TodoListTableViewController: UITableViewController{
 extension TodoListTableViewController : UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        for item in todoListArray {
-            if item.task.contains(searchBar.text!){
-                print(item.task)
-            }
-        } 
+                print(searchBar.text!)
     }
+    
 }
 
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
-        print("ItemCallback")
         if !itemList.isEmpty {
             self.todoListArray = itemList
             DispatchQueue.main.async {

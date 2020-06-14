@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var login_TEXTVIEW_password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyBoard()
         fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
     }
     
@@ -53,5 +54,16 @@ extension LoginViewController: UserCallback {
         self.performSegue(withIdentifier: K.loginSegue, sender: self)
     }
     
+    
+}
+extension LoginViewController {
+    func hideKeyBoard() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self,action: #selector(dismissKeyBoard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyBoard() {
+        view.endEditing(true)
+    }
     
 }

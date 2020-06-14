@@ -17,8 +17,8 @@ class SearchGroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
-        fbGroupService.onUserGroupListChangeListener(user: user)
-        print("Testingggggg")
+        fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: false)
+        fbGroupService.getAllGroups(user: user)
     }
    
     // MARK: - Table view data source
@@ -38,7 +38,6 @@ class SearchGroupTableViewController: UITableViewController {
     }
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            
-           // Handle the state of the current selected todo item
         if !self.userGroupId.contains(groupList[indexPath.row].getUUID()) {
             fbGroupService.appendGroupToUser(user: user, group: groupList[indexPath.row])
         }else {
@@ -53,7 +52,6 @@ class SearchGroupTableViewController: UITableViewController {
 
 extension SearchGroupTableViewController : GroupCallback {
     func onFinish(user: User,group: [Group]) {
-        print("on Finish gets called from SearchGroupTableViewController - GroupCallback")
         if !group.isEmpty {
             self.groupList = group
             self.userGroupId = []
@@ -65,3 +63,22 @@ extension SearchGroupTableViewController : GroupCallback {
     }
 }
 
+// MARK: - Search in the todo list
+extension SearchGroupTableViewController : UISearchBarDelegate {
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fbGroupService.getGroupFilteredByName(name: searchBar.text!)
+    }
+}//   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let height = scrollView.frame.size.height
+//        let contentYoffset = scrollView.contentOffset.y
+//        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+//        if distanceFromBottom < height {
+//            if getData == false {
+//                getData = true
+//                pageSize = pageSize + 2
+//                print("\(pageSize)")
+//                fbGroupService.getAllGroups(user: user, pageSize: pageSize)
+//            }
+//        }
+//    }

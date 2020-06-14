@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController {
     var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyBoard()
         fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
     }
     
@@ -57,4 +58,17 @@ extension RegisterViewController: UserCallback {
     func onFinish(user: User) {
         self.performSegue(withIdentifier: K.registerSegue, sender: self)
     }
+}
+
+//MARK: - HANDLE HIDE KEYBOARD
+extension RegisterViewController {
+    func hideKeyBoard() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self,action: #selector(dismissKeyBoard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyBoard() {
+        view.endEditing(true)
+    }
+    
 }
