@@ -9,4 +9,5 @@ target 'Kader' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'SwipeCellKit'
 end

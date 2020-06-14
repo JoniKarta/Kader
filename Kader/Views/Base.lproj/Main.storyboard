@@ -195,7 +195,7 @@
                             <barButtonItem systemItem="add" id="QPR-cb-Lf6">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="category_BTN_add:" destination="1sl-yD-cJT" id="maO-me-QXg"/>
+                                    <action selector="mygroupview_BTN_addgroup:" destination="1sl-yD-cJT" id="maO-me-QXg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="organize" id="0DR-aH-jh5">

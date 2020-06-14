@@ -13,14 +13,12 @@ class SearchGroupTableViewController: UITableViewController {
     var groupList = [Group]()
     var user: User!
     var fbGroupService: FirebaseFirestoreGroupService!
-    var fbUserService: FirebaseFirestoreUserService!
-    var userSelectedGroupList = [String]()
+    var userGroupId = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
-        fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
-        fbGroupService.getAllGroups()
-        fbUserService.onUserGroupsChangedListener(userEmail: user.userEmail)
+        fbGroupService.onUserGroupListChangeListener(user: user)
+        print("Testingggggg")
     }
    
     // MARK: - Table view data source
@@ -33,7 +31,7 @@ class SearchGroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableGroup, for: indexPath)
         cell.textLabel?.text = groupList[indexPath.row].groupName
-        if userSelectedGroupList.contains(groupList[indexPath.row].groupName) {
+        if userGroupId.contains(groupList[indexPath.row].getUUID()) {
               cell.accessoryType = .checkmark
         }
         return cell
@@ -41,7 +39,7 @@ class SearchGroupTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            
            // Handle the state of the current selected todo item
-        if !self.userSelectedGroupList.contains(groupList[indexPath.row].groupName) {
+        if !self.userGroupId.contains(groupList[indexPath.row].getUUID()) {
             fbGroupService.appendGroupToUser(user: user, group: groupList[indexPath.row])
         }else {
             
@@ -49,12 +47,17 @@ class SearchGroupTableViewController: UITableViewController {
            // Handle the problem of selection a row and it flashes
            tableView.deselectRow(at: indexPath, animated: true)
            
-       }}
+       }
+    
+}
 
 extension SearchGroupTableViewController : GroupCallback {
-    func onFinish(group: [Group]) {
+    func onFinish(user: User,group: [Group]) {
+        print("on Finish gets called from SearchGroupTableViewController - GroupCallback")
         if !group.isEmpty {
             self.groupList = group
+            self.userGroupId = []
+            self.userGroupId = user.groupListId
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -62,14 +65,3 @@ extension SearchGroupTableViewController : GroupCallback {
     }
 }
 
-extension SearchGroupTableViewController: UserCallback {
-    func onFinish(user: User) {
-        self.userSelectedGroupList = []
-        self.userSelectedGroupList = user.selectedGroupsList
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    
-}

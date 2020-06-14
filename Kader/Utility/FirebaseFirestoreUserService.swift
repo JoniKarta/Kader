@@ -53,26 +53,6 @@ class FirebaseFirestoreUserService {
             }
         }
     }
-    
-    func onUserGroupsChangedListener(userEmail: String) {
-        let docRef = db.collection(K.FireStore.usersCollection).document(userEmail)
-        
-        docRef.addSnapshotListener {(document, error ) in
-            let result = Result {
-                try document?.data(as: User.self)
-            }
-            switch result {
-            case .success(let user):
-                if let user = user {
-                    self.callback?.onFinish(user: user)
-                } else {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
-                }
-            case .failure(let error):
-                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-            }
-        }
-        
-    }
+
     
 }

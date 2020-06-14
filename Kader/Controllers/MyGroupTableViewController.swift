@@ -57,36 +57,38 @@ class MyGroupTableViewController: UITableViewController {
     
     // MARK: - ADD NEW Group to the list
     
-    @IBAction func category_BTN_add(_ sender: UIBarButtonItem) {
+    @IBAction func mygroupview_BTN_addgroup(_ sender: UIBarButtonItem) {
         var newTaskTextField = UITextField()
-        let addItemDialog = UIAlertController(title: "Add new group to schedule your missions", message:"", preferredStyle: .alert)
+        let addGroupAlertDialog = UIAlertController(title: "Add new group to schedule your missions", message:"", preferredStyle: UIAlertController.Style.alert)
         
         let action = UIAlertAction(title: "Add Group" , style: .default) { (action) in
             let newGroup = Group(groupName: newTaskTextField.text!, creator: self.user.userEmail)
-            self.groupList.append(newGroup)
             self.fbService.appendGroupToUser(user: self.user, group: newGroup)
             self.fbService.setGroup(newGroup: newGroup)
             self.tableView.reloadData()
         }
         
-        addItemDialog.addTextField {
-            (alertTextField) in alertTextField.placeholder = "Add new category for the team"
+        // Set the placeholder of the text and get the text from it
+        addGroupAlertDialog.addTextField {
+            (alertTextField) in alertTextField.placeholder = "Add new group for your team"
             newTaskTextField = alertTextField
         }
-        addItemDialog.addAction(action)
-        present(addItemDialog, animated: true, completion:nil)
+        
+        addGroupAlertDialog.addAction(action)
+        addGroupAlertDialog.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        present(addGroupAlertDialog, animated: true, completion:nil)
     }
 }
 
 
 extension MyGroupTableViewController: GroupCallback {
-    func onFinish(group: [Group]) {
+    func onFinish(user: User, group: [Group]) {
+        print("on Finish gets called from MyGroupTableViewController")
         if !group.isEmpty {
             self.groupList = group
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
 }

@@ -24,26 +24,42 @@ class FirebaseFirestoreItemService {
         self.vc = vc
     }
     
-    func setTodoItem(newGroup: Group, todoItem: TodoItem){
-        do{
-            try  db.collection(K.FireStore.groupsCollection)
-                .document(newGroup.groupName)
-                .collection(K.FireStore.tasksCollection)
-                .document().setData(from: todoItem)
-        }catch let error {
-            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-        }
-    }
-    
-    func getAllTodoItem(group: Group){
-        print("Get All Todo Item gets called")
+    func setTodoItem(group: Group, todoItem: TodoItem){
         db.collection(K.FireStore.groupsCollection)
-            .document(group.groupName)
-            .collection(K.FireStore.tasksCollection)
-            .getDocuments() { (querySnapshot, err) in
+            .whereField("uuid", isEqualTo: group.getUUID())
+            .getDocuments() {(documentSnapshot, err) in
                 if let err = err {
                     Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
                 } else {
+                    for document in documentSnapshot!.documents {
+                        let docRef = document.reference
+                        do {
+                            try docRef.collection(K.FireStore.tasksCollection)
+                                .document().setData(from : todoItem)
+                                self.getAllTodoItems(group: group)
+                        }catch let error {
+                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                        }
+                    }
+                }
+        }
+    }
+    
+    
+    func getAllTodoItems(group: Group) {
+        self.itemList = []
+        db.collection(K.FireStore.groupsCollection).whereField("uuid", isEqualTo: group.getUUID()).getDocuments() { (documentSnapshot, err) in
+            if let err = err {
+                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
+                return
+            }
+            for document in documentSnapshot!.documents {
+                document.reference.collection(K.FireStore.tasksCollection).getDocuments() {
+                    (querySnapshot, err) in
+                    if let err = err {
+                        Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
+                        return
+                    }
                     for document in querySnapshot!.documents {
                         let result = Result {
                             try document.data(as: TodoItem.self)
@@ -52,15 +68,21 @@ class FirebaseFirestoreItemService {
                         case .success(let todoItem):
                             if let item = todoItem {
                                 self.itemList.append(item)
-                            } else {
-                                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: err))")
                             }
                         case .failure(let error):
                             Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                            return
                         }
                     }
                     self.callback?.onFinish(itemList: self.itemList)
                 }
+            }
         }
     }
 }
+
+        
+    
+   
+
+

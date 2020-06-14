@@ -17,8 +17,7 @@ class TodoListTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         fbItemService = FirebaseFirestoreItemService(vc: self, callback: self)
-        fbItemService.getAllTodoItem(group: group)
-        print("TodoListTableViewController")
+        fbItemService.getAllTodoItems(group: group)
     }
   
     
@@ -64,11 +63,7 @@ class TodoListTableViewController: UITableViewController{
             // Create new todoItem
             let todoItem = TodoItem(task: newTaskTextField.text!)
             
-            self.fbItemService.setTodoItem(newGroup: self.group, todoItem: todoItem)
-            // Add new item to the list
-            self.todoListArray.append(todoItem)
-            // Reload the data after its has been added
-            self.tableView.reloadData()
+            self.fbItemService.setTodoItem(group: self.group, todoItem: todoItem)
         }
         
         addItemDialog.addTextField {
@@ -95,6 +90,7 @@ extension TodoListTableViewController : UISearchBarDelegate {
 
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
+        print("ItemCallback")
         if !itemList.isEmpty {
             self.todoListArray = itemList
             DispatchQueue.main.async {
