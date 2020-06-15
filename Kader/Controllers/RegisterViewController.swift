@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var register_TEXTVIEW_email: UITextField!
     @IBOutlet weak var register_TEXTVIEW_confirm: UITextField!
     @IBOutlet weak var register_TEXTVIEW_password: UITextField!
+    
     let db = Firestore.firestore()
     var fbUserService: FirebaseFirestoreUserService!
     var user: User!

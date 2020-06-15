@@ -18,6 +18,7 @@
 		C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */; };
 		C0A36C1624931F5F006AEBFE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1524931F5F006AEBFE /* Group.swift */; };
 		C0A36C1824931FDE006AEBFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1724931FDE006AEBFE /* User.swift */; };
+		C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A538142497AB7C00173E6F /* CustomGroupCell.swift */; };
 		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */; };
@@ -64,6 +65,7 @@
 		C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
 		C0A36C1524931F5F006AEBFE /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C0A36C1724931FDE006AEBFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C0A538142497AB7C00173E6F /* CustomGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupCell.swift; sourceTree = "<group>"; };
 		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C01824F624902CBD0046CBAB /* Main.storyboard */,
+				C0A538142497AB7C00173E6F /* CustomGroupCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
 				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
+				C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */,
 				C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */,
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,

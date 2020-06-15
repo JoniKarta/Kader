@@ -20,6 +20,7 @@ class MyGroupTableViewController: UITableViewController {
         super.viewDidLoad()
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
         fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: true)
+        
     }
     
     // MARK: - Table view data source
@@ -30,9 +31,10 @@ class MyGroupTableViewController: UITableViewController {
     
     // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath)
-        
-        cell.textLabel?.text = groupList[indexPath.row].groupName
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
+        cell.groupView_LBL_groupName.text = "Group: \(groupList[indexPath.row].groupName)"
+        cell.groupView_LBL_creator.text = "Creator: \(groupList[indexPath.row].getCreator())"
+        cell.groupView_IMG_role.image = user.userEmail != groupList[indexPath.row].getCreator() ? #imageLiteral(resourceName: "soldier") : #imageLiteral(resourceName: "commander")
         return cell
     }
     
@@ -111,3 +113,4 @@ extension MyGroupTableViewController: GroupCallback {
         }
     }
 }
+
