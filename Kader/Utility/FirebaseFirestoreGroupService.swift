@@ -12,6 +12,8 @@ import FirebaseFirestoreSwift
 
 protocol GroupCallback {
     func onFinish(user: User, group: [Group])
+    
+    func reloadData()
 }
 
 class FirebaseFirestoreGroupService {
@@ -26,18 +28,7 @@ class FirebaseFirestoreGroupService {
         self.callback = callback
         self.vc = vc
     }
-    
-    //MARK: - ADD GROUP
-    func setGroup(newGroup: Group){
-        let docRef =  db.collection(K.FireStore.groupsCollection).document()
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
-            } else {
-                docRef.setData(["groupName": newGroup.groupName, "creator":    newGroup.getCreator(),"uuid" : newGroup.getUUID()])
-            }
-        }
-    }
+     
     
     // MARK: - USER GROUP LIST LISTENER
     func onUserGroupListChangeListener(user: User, isGroupFiltered: Bool){
@@ -91,13 +82,24 @@ class FirebaseFirestoreGroupService {
     
     
     //MARK: - APPEND GROUP TO USER
+    
     func appendGroupToUser(user: User, group: Group){
         db.collection(K.FireStore.usersCollection)
             .document(user.userEmail).updateData(["groupListId": FieldValue.arrayUnion([group.getUUID()])])
+                
     }
     
-    
-    
+    func setGroup(user: User, newGroup: Group){
+         let docRef =  db.collection(K.FireStore.groupsCollection).document()
+         docRef.getDocument { (document, error) in
+             if let document = document, document.exists {
+                 Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
+             } else {
+                 docRef.setData(["groupName": newGroup.groupName, "creator":    newGroup.getCreator(),"uuid" : newGroup.getUUID()])
+                    self.appendGroupToUser(user: user, group: newGroup)
+             }
+         }
+     }
     //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.groupsCollection)

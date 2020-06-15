@@ -63,8 +63,7 @@ class MyGroupTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Group" , style: .default) { (action) in
             let newGroup = Group(groupName: newTaskTextField.text!, creator: self.user.userEmail)
-            self.fbGroupService.appendGroupToUser(user: self.user, group: newGroup)
-            self.fbGroupService.setGroup(newGroup: newGroup)
+            self.fbGroupService.setGroup(user: self.user, newGroup: newGroup)
             self.tableView.reloadData()
         }
         
@@ -94,8 +93,17 @@ class MyGroupTableViewController: UITableViewController {
 
     //MARK: - GROUP ON FINISH CALLBACK
 extension MyGroupTableViewController: GroupCallback {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     func onFinish(user: User, group: [Group]) {
+        print("onFinish gets called")
         if !group.isEmpty {
+            print(group)
             self.groupList = group
             DispatchQueue.main.async {
                 self.tableView.reloadData()

@@ -51,6 +51,10 @@ class SearchGroupTableViewController: UITableViewController {
 }
 
 extension SearchGroupTableViewController : GroupCallback {
+    func reloadData() {
+     print("world")
+    }
+    
     func onFinish(user: User,group: [Group]) {
         if !group.isEmpty {
             self.groupList = group

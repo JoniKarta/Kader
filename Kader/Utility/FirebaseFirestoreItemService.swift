@@ -36,7 +36,7 @@ class FirebaseFirestoreItemService {
                         do {
                             try docRef.collection(K.FireStore.tasksCollection)
                                 .document().setData(from : todoItem)
-                                self.getAllTodoItems(group: group)
+                            self.getAllTodoItems(group: group)
                         }catch let error {
                             Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
                         }
@@ -81,8 +81,8 @@ class FirebaseFirestoreItemService {
     }
 }
 
-        
-    
-   
+
+
+
 
 
