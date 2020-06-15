@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import SwipeCellKit
 
 //MARK: - CUSTOM GORUP CELL
 
-class CustomGroupCell : UITableViewCell{
+class CustomGroupCell : SwipeTableViewCell{
     
     
     @IBOutlet weak var groupView_LBL_groupName: UILabel!

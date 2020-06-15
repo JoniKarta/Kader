@@ -270,7 +270,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYX-s5-iuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3849.275362318841" y="363.61607142857139"/>
+            <point key="canvasLocation" x="-3849" y="359"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXz-OD-Tli">
@@ -311,13 +311,41 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellGroupItem" id="H1m-UK-XOA">
-                                <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellGroupItem" rowHeight="81" id="H1m-UK-XOA" customClass="CustomGroupSearchCell" customModule="Kader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H1m-UK-XOA" id="8dn-oy-qE1">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-zg-Mgy">
+                                            <rect key="frame" x="10" y="0.0" width="396" height="81"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKK-gJ-6Vg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130.33333333333334" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y61-Fh-Ggw">
+                                                    <rect key="frame" x="0.0" y="43" width="101.66666666666667" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Gi8-zg-Mgy" firstAttribute="top" secondItem="8dn-oy-qE1" secondAttribute="top" id="QCe-no-EIH"/>
+                                        <constraint firstItem="Gi8-zg-Mgy" firstAttribute="leading" secondItem="8dn-oy-qE1" secondAttribute="leading" constant="10" id="ajz-qD-748"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gi8-zg-Mgy" secondAttribute="bottom" id="smE-iE-W9s"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gi8-zg-Mgy" secondAttribute="trailing" constant="8" id="vhr-od-SUi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="searchView_LBL_creatorName" destination="Y61-Fh-Ggw" id="bB3-KM-fIx"/>
+                                    <outlet property="searchView_LBL_groupName" destination="AKK-gJ-6Vg" id="9Qs-YV-v3B"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -329,7 +357,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eL2-hX-GIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2696" y="51"/>
+            <point key="canvasLocation" x="-2571.0144927536235" y="43.526785714285715"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="qjC-jU-y00">

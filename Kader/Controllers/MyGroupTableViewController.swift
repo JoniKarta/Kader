@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestoreSwift
 import Firebase
+import SwipeCellKit
 
 class MyGroupTableViewController: UITableViewController {
     
@@ -23,7 +24,7 @@ class MyGroupTableViewController: UITableViewController {
         
     }
     
-    // MARK: - Table view data source
+    // MARK: - TABLE VIEW DATA SROUCE
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupList.count
@@ -32,9 +33,10 @@ class MyGroupTableViewController: UITableViewController {
     // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
-        cell.groupView_LBL_groupName.text = "Group: \(groupList[indexPath.row].groupName)"
-        cell.groupView_LBL_creator.text = "Creator: \(groupList[indexPath.row].getCreator())"
+        cell.groupView_LBL_groupName.text = groupList[indexPath.row].groupName
+        cell.groupView_LBL_creator.text = groupList[indexPath.row].getCreator()
         cell.groupView_IMG_role.image = user.userEmail != groupList[indexPath.row].getCreator() ? #imageLiteral(resourceName: "soldier") : #imageLiteral(resourceName: "commander")
+        cell.delegate = self
         return cell
     }
     
@@ -43,7 +45,7 @@ class MyGroupTableViewController: UITableViewController {
         performSegue(withIdentifier: K.taskSegue, sender: self)
     }
     
-    // Preperation for segue
+    // MARK: - SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.taskSegue {
             let destinationController = segue.destination as! TodoListTableViewController
@@ -114,3 +116,19 @@ extension MyGroupTableViewController: GroupCallback {
     }
 }
 
+// MARK: - EXTENSION SWIPE CELL
+
+extension MyGroupTableViewController : SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    guard orientation == .right else { return nil }
+
+    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+        print("Delete action")
+        }
+
+    // customize the action appearance
+    deleteAction.image = UIImage(named: "delete")
+
+    return [deleteAction]
+}
+}
