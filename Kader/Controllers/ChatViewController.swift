@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import IQKeyboardManagerSwift
+
 class ChatViewController: UIViewController {
     
     
@@ -25,6 +27,11 @@ class ChatViewController: UIViewController {
         chatView_TBL_chat.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageReusableIdentifier")
         fbChatService = FirebaseFirestoreChatService(vc: self, callback: self)
         fbChatService.readMessages(group: group)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 10
+
     }
     
     // MARK: - Table view data source
@@ -35,6 +42,7 @@ class ChatViewController: UIViewController {
                 let newMessage = Message(sender: messageSender, body: message)
                 fbChatService.writeNewMessage(group: self.group, message: newMessage)
             }
+            chatView_TV_messagePlaceholder.text = ""
         }
     }
 }
@@ -47,8 +55,17 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageReusableIdentifier", for: indexPath) as! MessageCell
-        cell.chatView_LBL_bodyMessage.text = messageList[indexPath.row].body
-        cell.chatView_LBL_sentBy.text = messageList[indexPath.row].sender
+        let message = messageList[indexPath.row]
+        cell.chatView_LBL_bodyMessage.text = message.body
+        cell.chatView_LBL_sentBy.text = message.sender
+        if message.sender == Auth.auth().currentUser?.email {
+            cell.chatView_IMG_imageLeft.isHidden = false
+            cell.chatView_IMG_imageRight.isHidden = true
+        }else {
+            cell.chatView_IMG_imageLeft.isHidden = true
+            cell.chatView_IMG_imageRight.isHidden = false
+
+        }
         return cell
     }
 }
@@ -64,6 +81,10 @@ extension ChatViewController: ChatCallback {
         self.messageList = messageList
         DispatchQueue.main.async {
             self.chatView_TBL_chat.reloadData()
+            if !messageList.isEmpty{
+            let indexPath = IndexPath(row: self.messageList.count - 1, section: 0)
+            self.chatView_TBL_chat.scrollToRow(at: indexPath, at: .top , animated: true)
+            }
         }
     }
     

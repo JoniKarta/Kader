@@ -13,7 +13,8 @@ class MessageCell: UITableViewCell {
     @IBOutlet weak var chatView_LBL_bodyMessage: UILabel!
     @IBOutlet weak var chatView_VIEW_messageViewHolder: UIView!
     @IBOutlet weak var chatView_LBL_sentBy: UILabel!
-    @IBOutlet weak var chatView_IMG_image: UIImageView!
+    @IBOutlet weak var chatView_IMG_imageRight: UIImageView!
+    @IBOutlet weak var chatView_IMG_imageLeft: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,4 +10,5 @@ target 'Kader' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'SwipeCellKit'
+  pod 'IQKeyboardManagerSwift'
 end

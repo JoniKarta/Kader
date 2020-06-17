@@ -19,20 +19,27 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-U4-887">
                         <rect key="frame" x="10" y="10" width="304" height="60"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="eF4-mD-zzU">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="754-WN-WiS"/>
+                                    <constraint firstAttribute="width" constant="40" id="l53-YL-5Xc"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-70-Zni">
-                                <rect key="frame" x="0.0" y="0.0" width="254" height="60"/>
+                                <rect key="frame" x="50" y="0.0" width="204" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iwf-43-PSl">
-                                        <rect key="frame" x="10" y="10" width="234" height="40"/>
+                                        <rect key="frame" x="10" y="10" width="184" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent By" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqs-te-loW">
-                                                <rect key="frame" x="0.0" y="0.0" width="234" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-o2-73p">
-                                                <rect key="frame" x="0.0" y="20" width="234" height="20"/>
+                                                <rect key="frame" x="0.0" y="20" width="184" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -67,12 +74,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="chatView_IMG_image" destination="dGI-rx-7wm" id="YRe-CI-qfS"/>
+                <outlet property="chatView_IMG_imageLeft" destination="eF4-mD-zzU" id="5Kb-e8-V9o"/>
+                <outlet property="chatView_IMG_imageRight" destination="dGI-rx-7wm" id="YRe-CI-qfS"/>
                 <outlet property="chatView_LBL_bodyMessage" destination="Uoh-o2-73p" id="Dtv-L0-adn"/>
                 <outlet property="chatView_LBL_sentBy" destination="mqs-te-loW" id="RP4-6F-Thc"/>
                 <outlet property="chatView_VIEW_messageViewHolder" destination="sdc-70-Zni" id="zTe-bW-Qzo"/>
             </connections>
-            <point key="canvasLocation" x="-100" y="47"/>
+            <point key="canvasLocation" x="-100.00000000000001" y="46.875"/>
         </tableViewCell>
     </objects>
     <resources>
