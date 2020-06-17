@@ -17,6 +17,10 @@
 		C019A1F724937F5000BFBF7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F624937F5000BFBF7B /* Constants.swift */; };
 		C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */; };
 		C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E38249A3F93007B0414 /* CustomTaskCell.swift */; };
+		C0506E3B249A945C007B0414 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E3A249A945C007B0414 /* ChatViewController.swift */; };
+		C0506E3D249A9475007B0414 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E3C249A9475007B0414 /* Message.swift */; };
+		C0506E42249A9536007B0414 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E40249A9536007B0414 /* MessageCell.swift */; };
+		C0506E43249A9536007B0414 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0506E41249A9536007B0414 /* MessageCell.xib */; };
 		C0A36C1624931F5F006AEBFE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1524931F5F006AEBFE /* Group.swift */; };
 		C0A36C1824931FDE006AEBFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1724931FDE006AEBFE /* User.swift */; };
 		C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A538142497AB7C00173E6F /* CustomGroupCell.swift */; };
@@ -67,6 +71,10 @@
 		C019A1F624937F5000BFBF7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
 		C0506E38249A3F93007B0414 /* CustomTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskCell.swift; sourceTree = "<group>"; };
+		C0506E3A249A945C007B0414 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C0506E3C249A9475007B0414 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C0506E40249A9536007B0414 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		C0506E41249A9536007B0414 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		C0A36C1524931F5F006AEBFE /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C0A36C1724931FDE006AEBFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0A538142497AB7C00173E6F /* CustomGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupCell.swift; sourceTree = "<group>"; };
@@ -168,6 +176,7 @@
 				C0EE37B82490CAE5009D36A5 /* TodoItem.swift */,
 				C0A36C1524931F5F006AEBFE /* Group.swift */,
 				C0A36C1724931FDE006AEBFE /* User.swift */,
+				C0506E3C249A9475007B0414 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */,
+				C0506E3A249A945C007B0414 /* ChatViewController.swift */,
 				C018252024902E620046CBAB /* TodoListTableViewController.swift */,
 				C0F4710B24924B8D00B3C37D /* LoginViewController.swift */,
 				C0F4710D24924BA400B3C37D /* RegisterViewController.swift */,
@@ -193,6 +203,8 @@
 				C0A538142497AB7C00173E6F /* CustomGroupCell.swift */,
 				C0A538162497BB4900173E6F /* CustomGroupSearchCell.swift */,
 				C0506E38249A3F93007B0414 /* CustomTaskCell.swift */,
+				C0506E40249A9536007B0414 /* MessageCell.swift */,
+				C0506E41249A9536007B0414 /* MessageCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0506E43249A9536007B0414 /* MessageCell.xib in Resources */,
 				C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */,
 				C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */,
 				C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */,
@@ -391,10 +404,12 @@
 				C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */,
 				C0F324FA24955E5000B86691 /* Alert.swift in Sources */,
 				C0F324F82494E71700B86691 /* FirebaseFirestoreUserService.swift in Sources */,
+				C0506E3D249A9475007B0414 /* Message.swift in Sources */,
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
 				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
 				C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */,
+				C0506E42249A9536007B0414 /* MessageCell.swift in Sources */,
 				C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */,
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
@@ -403,6 +418,7 @@
 				C0A538172497BB4900173E6F /* CustomGroupSearchCell.swift in Sources */,
 				C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */,
 				C0A36C1824931FDE006AEBFE /* User.swift in Sources */,
+				C0506E3B249A945C007B0414 /* ChatViewController.swift in Sources */,
 				C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
