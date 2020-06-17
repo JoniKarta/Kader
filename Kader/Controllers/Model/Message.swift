@@ -8,13 +8,16 @@
 
 import Foundation
 
-class Message {
+class Message: Codable {
     
     var sender: String = ""
     var body: String = ""
+    var dateIntervalTime : Double
     
-    init(body:  String) {
+    init(sender: String, body:  String) {
+        self.sender = sender
         self.body = body
+        self.dateIntervalTime = Date().timeIntervalSince1970
     }
     
 }

@@ -25,7 +25,10 @@ struct K {
         static let groupsCollection = "Groups"
         static let tasksCollection = "Tasks" 
         static let userSubGroupCollection = "GroupList"
+        static let chatCollection = "Chat"
+        static let chatMessageCollection = "Messages"
     }
+    
     
 
 }

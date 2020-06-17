@@ -111,7 +111,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="4Bn-Fj-tPp">
                                 <connections>
-                                    <segue destination="z93-pU-x33" kind="show" id="MXR-gu-TYe"/>
+                                    <segue destination="z93-pU-x33" kind="show" identifier="chatViewController" id="MXR-gu-TYe"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -738,6 +738,9 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandLightPurple"/>
                                         <state key="normal" image="paperplane.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="chatView_BTN_sendMessage:" destination="z93-pU-x33" eventType="touchUpInside" id="cgS-Ar-AOE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -766,6 +769,7 @@
                     <navigationItem key="navigationItem" id="UAb-3d-NIe"/>
                     <connections>
                         <outlet property="chatView_TBL_chat" destination="VEv-QW-bQr" id="IQ0-d7-aKk"/>
+                        <outlet property="chatView_TV_messagePlaceholder" destination="B0Y-9C-5d2" id="7Fi-Rc-1tv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdZ-mg-8m5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

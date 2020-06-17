@@ -77,6 +77,21 @@ class TodoListTableViewController: UITableViewController{
         
         present(addItemDialog, animated: true, completion:nil)
     }
+    
+    
+    
+    // MARK - SEGUE TO CHAT
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "chatViewController" {
+            let destinationViewController = segue.destination as! ChatViewController
+            destinationViewController.group = self.group
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 // MARK: - Search in the todo list
@@ -96,4 +111,7 @@ extension TodoListTableViewController: ItemCallback{
         }
     }
 }
+
+
+
 
