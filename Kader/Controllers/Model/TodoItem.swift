@@ -11,13 +11,14 @@ import Foundation
 class TodoItem: Codable, CustomStringConvertible{
     
     var task: String = ""
-    var isSelected : Bool = false
+    var isDone : Bool = false
+    var completedBy : String = ""
     
     init(task: String) {
         self.task = task
     }
     
     public var description: String {
-        return "Task: \(self.task), Selected State: \(self.isSelected)"
+        return "Task: \(self.task)"
     }
 }

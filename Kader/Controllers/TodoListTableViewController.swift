@@ -13,7 +13,8 @@ class TodoListTableViewController: UITableViewController{
     var todoListArray:[TodoItem] = [TodoItem]()
     var fbItemService : FirebaseFirestoreItemService!
     var group: Group!
-    
+    var user: User!
+    @IBOutlet weak var taskView_LBL_task: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         fbItemService = FirebaseFirestoreItemService(vc: self, callback: self)
@@ -30,12 +31,15 @@ class TodoListTableViewController: UITableViewController{
     
     // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableItem, for: indexPath)
-        
-        cell.textLabel?.text = todoListArray[indexPath.row].task
-        let currentSelectedTask = todoListArray[indexPath.row]
-        cell.accessoryType = currentSelectedTask.isSelected == true ? .checkmark : .none
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableItem, for: indexPath) as! CustomTaskCell
+        cell.taskView_LBL_task.text = todoListArray[indexPath.row].task
+        if todoListArray[indexPath.row].isDone == true {
+            cell.taskView_LBL_doneBy.text = "Completed By: \(todoListArray[indexPath.row].completedBy)"
+            cell.accessoryType = .checkmark
+        }else {
+            cell.accessoryType = .none
+            cell.taskView_LBL_doneBy.text = "This task isn't completed yet"
+        }
         return cell
     }
     
@@ -45,9 +49,8 @@ class TodoListTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Handle the state of the current selected todo item
-        todoListArray[indexPath.row].isSelected = !todoListArray[indexPath.row].isSelected
+        fbItemService.setItemDone(user: user, group: group, todoItem: todoListArray[indexPath.row])
         
-        tableView.reloadData()
         // Handle the problem of selection a row and it flashes
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -87,11 +90,9 @@ extension TodoListTableViewController : UISearchBarDelegate {
 
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
-        if !itemList.isEmpty {
-            self.todoListArray = itemList
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        self.todoListArray = itemList
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }

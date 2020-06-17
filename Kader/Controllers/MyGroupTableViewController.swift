@@ -51,6 +51,7 @@ class MyGroupTableViewController: UITableViewController {
             let destinationController = segue.destination as! TodoListTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationController.group = groupList[indexPath.row]
+                destinationController.user = self.user
             }
         }else if segue.identifier == K.searchGroupSegue {
             let destinationController = segue.destination as! SearchGroupTableViewController
@@ -114,8 +115,6 @@ extension MyGroupTableViewController : SwipeTableViewCellDelegate {
 
     let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
         self.fbGroupService.removeGroupFromUser(user: self.user, group: self.groupList[indexPath.row])
-        
-        
     }
 
     // customize the action appearance

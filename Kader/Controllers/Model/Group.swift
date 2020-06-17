@@ -15,6 +15,10 @@ class Group: Codable, CustomStringConvertible {
     private var creator: String = ""
     private var uuid = UUID.init().uuidString
     
+    private enum CodingKeys: String , CodingKey {
+        case groupName, creator, uuid
+    }
+    
     init(groupName: String, creator: String) {
         self.groupName = groupName
         self.creator = creator

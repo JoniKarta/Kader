@@ -20,7 +20,6 @@ class SearchGroupTableViewController: UITableViewController {
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
         fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: false)
         fbGroupService.getAllGroups(user: user)
-        tableView.rowHeight = 60.0
     }
     
     // MARK: - TABLE VIEW DATA SOURCE
@@ -30,24 +29,19 @@ class SearchGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableGroup, for: indexPath) as! CustomGroupSearchCell
+        cell.delegate = self
         cell.searchView_LBL_groupName.text = groupList[indexPath.row].groupName
         cell.searchView_LBL_creatorName.text = groupList[indexPath.row].getCreator()
         if userGroupId.contains(groupList[indexPath.row].getUUID()) {
             cell.accessoryType = .checkmark
+        }else {
+            cell.accessoryType = .none
         }
-        cell.delegate = self
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if !self.userGroupId.contains(groupList[indexPath.row].getUUID()) {
-            fbGroupService.appendGroupToUser(user: user, group: groupList[indexPath.row])
-        }else {
-            
-        }
-        // Handle the problem of selection a row and it flashes
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
 }
@@ -81,10 +75,12 @@ extension SearchGroupTableViewController : SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
         
         let action = SwipeAction(style: .default, title: "Add") { action, indexPath in
-            print("Add action")
+          
+            if !self.userGroupId.contains(self.groupList[indexPath.row].getUUID()) {
+                self.fbGroupService.appendGroupToUser(user: self.user, group: self.groupList[indexPath.row])
+            }
         }
         
-        // customize the action appearance
         action.image = UIImage(named: "plus")
         
         return [action]

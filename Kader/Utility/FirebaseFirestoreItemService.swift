@@ -35,7 +35,7 @@ class FirebaseFirestoreItemService {
                         let docRef = document.reference
                         do {
                             try docRef.collection(K.FireStore.tasksCollection)
-                                .document().setData(from : todoItem)
+                                .document(todoItem.task).setData(from : todoItem)
                             self.getAllTodoItems(group: group)
                         }catch let error {
                             Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
@@ -45,14 +45,14 @@ class FirebaseFirestoreItemService {
         }
     }
     
-    
+        
     func getAllTodoItems(group: Group) {
-        self.itemList = []
         db.collection(K.FireStore.groupsCollection).whereField("uuid", isEqualTo: group.getUUID()).getDocuments() { (documentSnapshot, err) in
             if let err = err {
                 Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
                 return
             }
+            self.itemList = []
             for document in documentSnapshot!.documents {
                 document.reference.collection(K.FireStore.tasksCollection).getDocuments() {
                     (querySnapshot, err) in
@@ -76,6 +76,20 @@ class FirebaseFirestoreItemService {
                     }
                     self.callback?.onFinish(itemList: self.itemList)
                 }
+            }
+        }
+    }
+    
+    
+    func setItemDone(user: User, group: Group, todoItem: TodoItem) {
+        db.collection(K.FireStore.groupsCollection).whereField("uuid", isEqualTo: group.getUUID()).getDocuments() { (documentSnapshot, err) in
+            if let err = err {
+                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
+                return
+            }
+            for document in documentSnapshot!.documents {
+                document.reference.collection(K.FireStore.tasksCollection).document(todoItem.task).updateData(["isDone" : true,"completedBy" : user.userEmail])
+                self.getAllTodoItems(group: group)
             }
         }
     }

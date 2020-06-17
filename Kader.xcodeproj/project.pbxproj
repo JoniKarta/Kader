@@ -16,6 +16,7 @@
 		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
 		C019A1F724937F5000BFBF7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F624937F5000BFBF7B /* Constants.swift */; };
 		C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */; };
+		C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E38249A3F93007B0414 /* CustomTaskCell.swift */; };
 		C0A36C1624931F5F006AEBFE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1524931F5F006AEBFE /* Group.swift */; };
 		C0A36C1824931FDE006AEBFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1724931FDE006AEBFE /* User.swift */; };
 		C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A538142497AB7C00173E6F /* CustomGroupCell.swift */; };
@@ -65,6 +66,7 @@
 		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		C019A1F624937F5000BFBF7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
+		C0506E38249A3F93007B0414 /* CustomTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskCell.swift; sourceTree = "<group>"; };
 		C0A36C1524931F5F006AEBFE /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C0A36C1724931FDE006AEBFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0A538142497AB7C00173E6F /* CustomGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupCell.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C01824F624902CBD0046CBAB /* Main.storyboard */,
 				C0A538142497AB7C00173E6F /* CustomGroupCell.swift */,
 				C0A538162497BB4900173E6F /* CustomGroupSearchCell.swift */,
+				C0506E38249A3F93007B0414 /* CustomTaskCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */,
 				C0A36C1624931F5F006AEBFE /* Group.swift in Sources */,
 				C019A1F724937F5000BFBF7B /* Constants.swift in Sources */,
+				C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */,
 				C0F324FA24955E5000B86691 /* Alert.swift in Sources */,
 				C0F324F82494E71700B86691 /* FirebaseFirestoreUserService.swift in Sources */,
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
