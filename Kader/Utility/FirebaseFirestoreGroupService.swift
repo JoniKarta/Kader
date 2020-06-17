@@ -12,17 +12,15 @@ import FirebaseFirestoreSwift
 
 protocol GroupCallback {
     func onFinish(user: User, group: [Group])
-    
-    func reloadData()
 }
 
 class FirebaseFirestoreGroupService {
     let db = Firestore.firestore()
     let callback : GroupCallback?
+    var listener : ListenerRegistration?
     let vc : UIViewController
     var user: User = User()
     var groupList : [Group] = [Group]()
-    var listener : ListenerRegistration?
     
     init(vc: UIViewController , callback: GroupCallback){
         self.callback = callback
@@ -44,22 +42,25 @@ class FirebaseFirestoreGroupService {
     }
     
     func getFilteredGroups(user: User){
-        if user.groupListId.isEmpty{
-            return
-        }
-        db.collection(K.FireStore.groupsCollection)
-            .whereField("uuid", in: user.groupListId)
-            
-            .getDocuments() { querySnapshot, error in
-                self.groupList = []
-                if let error = error {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
-                }else{
-                    for document in querySnapshot!.documents {
-                        self.groupResultHandler(document: document)
+        if user.groupListId.isEmpty {
+            self.groupList = []
+            self.callback?.onFinish(user: user, group: self.groupList)
+        }else {
+            db.collection(K.FireStore.groupsCollection)
+                .whereField("uuid", in: user.groupListId)
+                
+                .getDocuments() { querySnapshot, error in
+                    self.groupList = []
+                    if let error = error {
+                        Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                    }else{
+                        for document in querySnapshot!.documents {
+                            self.groupResultHandler(document: document)
+                        }
+                        self.callback?.onFinish(user: user, group: self.groupList)
                     }
-                    self.callback?.onFinish(user: user, group: self.groupList)
-                }
+            }
+            
         }
         
     }
@@ -100,6 +101,11 @@ class FirebaseFirestoreGroupService {
              }
          }
      }
+    // Remove group from user
+      func removeGroupFromUser(user: User, group: Group){
+          db.collection(K.FireStore.usersCollection)
+              .document(user.userEmail).updateData(["groupListId": FieldValue.arrayRemove([group.getUUID()])])
+      }
     //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.groupsCollection)
@@ -142,7 +148,6 @@ class FirebaseFirestoreGroupService {
         switch result {
         case .success(let user):
             if let user = user {
-                self.user = user
                 if isGroupFilter {
                     self.getFilteredGroups(user: user)
                 }else {

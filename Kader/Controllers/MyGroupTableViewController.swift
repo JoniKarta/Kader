@@ -97,23 +97,13 @@ class MyGroupTableViewController: UITableViewController {
 
     //MARK: - GROUP ON FINISH CALLBACK
 extension MyGroupTableViewController: GroupCallback {
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        
-    }
-    
+   
     func onFinish(user: User, group: [Group]) {
-        print("onFinish gets called")
-        if !group.isEmpty {
-            print(group)
             self.groupList = group
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-    }
 }
 
 // MARK: - EXTENSION SWIPE CELL
@@ -123,12 +113,16 @@ extension MyGroupTableViewController : SwipeTableViewCellDelegate {
     guard orientation == .right else { return nil }
 
     let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-        print("Delete action")
-        }
+        self.fbGroupService.removeGroupFromUser(user: self.user, group: self.groupList[indexPath.row])
+        
+        
+    }
 
     // customize the action appearance
     deleteAction.image = UIImage(named: "delete")
-
+        
     return [deleteAction]
-}
+    }
+
+    
 }

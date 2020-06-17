@@ -29,6 +29,7 @@
 		C0F324FA24955E5000B86691 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F924955E5000B86691 /* Alert.swift */; };
 		C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710B24924B8D00B3C37D /* LoginViewController.swift */; };
 		C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4710D24924BA400B3C37D /* RegisterViewController.swift */; };
+		C0F79CB624995FBB0017665C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F79CB524995FBB0017665C /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C0F324F924955E5000B86691 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C0F4710B24924B8D00B3C37D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0F4710D24924BA400B3C37D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C0F79CB524995FBB0017665C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,6 @@
 				C01824F224902CBD0046CBAB /* SceneDelegate.swift */,
 				C0F324F62494A33C00B86691 /* Utility */,
 				C0EE37BB2490CB47009D36A5 /* Controllers */,
-				C0EE37BA2490CAE9009D36A5 /* Model */,
 				C0EE37BC2490CB5B009D36A5 /* Views */,
 				C01824F924902CBE0046CBAB /* Assets.xcassets */,
 				C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */,
@@ -177,6 +178,8 @@
 				C0F4710B24924B8D00B3C37D /* LoginViewController.swift */,
 				C0F4710D24924BA400B3C37D /* RegisterViewController.swift */,
 				C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */,
+				C0F79CB524995FBB0017665C /* ViewController.swift */,
+				C0EE37BA2490CAE9009D36A5 /* Model */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */,
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
+				C0F79CB624995FBB0017665C /* ViewController.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
 				C0A538172497BB4900173E6F /* CustomGroupSearchCell.swift in Sources */,
 				C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */,
