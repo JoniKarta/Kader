@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TodoItem: Codable, CustomStringConvertible{
+class TodoItem: Codable{
     
     var task: String = ""
     var isDone : Bool = false
@@ -17,8 +17,5 @@ class TodoItem: Codable, CustomStringConvertible{
     init(task: String) {
         self.task = task
     }
-    
-    public var description: String {
-        return "Task: \(self.task)"
-    }
+   
 }

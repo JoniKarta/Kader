@@ -8,16 +8,11 @@
 
 import Foundation
 
-class Group: Codable, CustomStringConvertible {
+class Group: Codable {
     
-    
-    var groupName: String = ""
-    private var creator: String = ""
     private var uuid = UUID.init().uuidString
-    
-    private enum CodingKeys: String , CodingKey {
-        case groupName, creator, uuid
-    }
+    private var creator: String = ""
+    var groupName: String = ""
     
     init(groupName: String, creator: String) {
         self.groupName = groupName
@@ -32,7 +27,4 @@ class Group: Codable, CustomStringConvertible {
         return uuid
     }
     
-    public var description: String {
-        return "Group Name: \(self.groupName), Creator: \(self.creator)"
-    }
 }

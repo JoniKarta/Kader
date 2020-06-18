@@ -12,13 +12,21 @@ import IQKeyboardManagerSwift
 
 class ChatViewController: UIViewController {
     
-    
-    var messageList = [Message]()
-    
     @IBOutlet weak var chatView_TV_messagePlaceholder: UITextField!
     @IBOutlet weak var chatView_TBL_chat: UITableView!
-    var fbChatService: FirebaseFirestoreChatService!
+
+   // Firebase chat service utility
+   var fbChatService: FirebaseFirestoreChatService!
+   
+    // Message list hold the messages which displyed
+    var messageList = [Message]()
+ 
+    // Hold the current group the chat is on
     var group: Group!
+    
+    // Hold the current user
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +37,6 @@ class ChatViewController: UIViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 10
 
     }
     
@@ -38,13 +45,18 @@ class ChatViewController: UIViewController {
     @IBAction func chatView_BTN_sendMessage(_ sender: UIButton) {
         if let message = chatView_TV_messagePlaceholder.text, let messageSender = Auth.auth().currentUser?.email {
             if !message.isEmpty {
-                let newMessage = Message(sender: messageSender, body: message)
+                let newMessage = Message(sender: messageSender,userName: user.userName, body: message)
                 fbChatService.writeNewMessage(group: self.group, message: newMessage)
             }
-            chatView_TV_messagePlaceholder.text = ""
+            DispatchQueue.main.async {
+                self.chatView_TV_messagePlaceholder.text = ""
+                
+            }
         }
     }
 }
+
+// MARK: - CHAT DATA SOURCE
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,16 +71,25 @@ extension ChatViewController: UITableViewDataSource {
         cell.chatView_LBL_sentBy.text = message.sender
         if message.sender == Auth.auth().currentUser?.email {
             cell.chatView_IMG_imageLeft.isHidden = false
-            cell.chatView_IMG_imageRight.isHidden = true
+            cell.chatView_VIEW_imageRight.isHidden = true
         }else {
             cell.chatView_IMG_imageLeft.isHidden = true
-            cell.chatView_IMG_imageRight.isHidden = false
-
+            cell.chatView_VIEW_imageRight.isHidden = false
+            cell.chatView_LBL_userName.text = getNameBySeperator(name: message.userName)
         }
         return cell
     }
+    
+    
+    func getNameBySeperator(name: String) -> String {
+        let split = name.components(separatedBy: " ")
+        let firstCharFirstName = split[0].first
+        let firstCharLastName = split[1].first
+        return String("\(firstCharFirstName!)\(firstCharLastName!)")
+    }
 }
 
+// MARK: - CHAT CALLBACK
 
 extension ChatViewController: ChatCallback {
     func onFinish(messageList: [Message]) {

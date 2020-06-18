@@ -10,12 +10,22 @@ import UIKit
 import ChameleonFramework
 
 class TodoListTableViewController: UITableViewController{
-    
-    var todoListArray:[TodoItem] = [TodoItem]()
-    var fbItemService : FirebaseFirestoreItemService!
-    var group: Group!
-    var user: User!
+      
     @IBOutlet weak var taskView_LBL_task: UILabel!
+    
+    // Firebase item service utility
+    var fbItemService : FirebaseFirestoreItemService!
+    
+    // Hold the todo items which will be displayed
+    var todoList:[TodoItem] = [TodoItem]()
+    
+    // Hold the group that contain the todoItems
+    var group: Group!
+    
+    // Hold the current user
+    var user: User!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fbItemService = FirebaseFirestoreItemService(vc: self, callback: self)
@@ -23,20 +33,18 @@ class TodoListTableViewController: UITableViewController{
     }
   
     
-    // MARK: - Table view data source
+    // MARK: -  TABLE VIEW DATA SOURCE
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return todoListArray.count
+        return todoList.count
     }
     
-    // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableItem, for: indexPath) as! CustomTaskCell
-        cell.taskView_LBL_task.text = todoListArray[indexPath.row].task
-        if todoListArray[indexPath.row].isDone == true {
-            cell.taskView_LBL_doneBy.text = "Completed By: \(todoListArray[indexPath.row].completedBy)"
-                cell.taskView_VIEW_taskContent.backgroundColor = FlatGreenDark()
+        cell.taskView_LBL_task.text = todoList[indexPath.row].task
+        if todoList[indexPath.row].isDone == true {
+            cell.taskView_LBL_doneBy.text = "Completed By: \(todoList[indexPath.row].completedBy)"
+                cell.taskView_VIEW_taskContent.backgroundColor = FlatMintDark()
                 cell.taskView_LBL_doneBy.textColor = ContrastColorOf(FlatGreenDark(), returnFlat: true)
                 cell.taskView_LBL_task.textColor = ContrastColorOf(FlatGreenDark(), returnFlat: true)
                 
@@ -50,23 +58,18 @@ class TodoListTableViewController: UITableViewController{
         return cell
     }
     
-    // MARK: - Table view actions
+    // MARK: - TABLE VIEW ACTION
     
-    // Handle the selection of a single item
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Handle the state of the current selected todo item
-        if todoListArray[indexPath.row].isDone != true{
-            fbItemService.setItemDone(user: user, group: group, todoItem: todoListArray[indexPath.row])
-            
+        if todoList[indexPath.row].isDone != true{
+            fbItemService.setItemDone(user: user, group: group, todoItem: todoList[indexPath.row])
         }
-        
-        // Handle the problem of selection a row and it flashes
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
-    // MARK: - Plus Bar Button action
+    // MARK: - ADD TASK
     
     @IBAction func todoList_BTN_addTask(_ sender: UIBarButtonItem) {
         var newTaskTextField = UITextField()
@@ -82,27 +85,25 @@ class TodoListTableViewController: UITableViewController{
             newTaskTextField = alertTextField
         }
         addItemDialog.addAction(action)
-        
+        addItemDialog.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         present(addItemDialog, animated: true, completion:nil)
     }
     
     
     
-    // MARK - SEGUE TO CHAT
+    // MARK: - PREPARE FOR SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chatViewController" {
             let destinationViewController = segue.destination as! ChatViewController
             destinationViewController.group = self.group
+            destinationViewController.user = self.user
         }
     }
     
-    
-    
-    
-    
 }
 
-// MARK: - Search in the todo list
+// MARK: - SEARCH DELEGATE
+
 extension TodoListTableViewController : UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -111,9 +112,10 @@ extension TodoListTableViewController : UISearchBarDelegate {
     
 }
 
+// MARK: - ITEM CALLBACK
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
-        self.todoListArray = itemList
+        self.todoList = itemList
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

@@ -13,9 +13,10 @@ class Message: Codable {
     var sender: String = ""
     var body: String = ""
     var dateIntervalTime : Double
-    
-    init(sender: String, body:  String) {
+    var userName: String
+    init(sender: String, userName: String,  body:  String) {
         self.sender = sender
+        self.userName = userName
         self.body = body
         self.dateIntervalTime = Date().timeIntervalSince1970
     }

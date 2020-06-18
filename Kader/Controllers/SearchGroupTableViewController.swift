@@ -12,10 +12,19 @@ import ChameleonFramework
 	
 class SearchGroupTableViewController: UITableViewController {
     
-    var groupList = [Group]()
-    var user: User!
+    // Firsebase group service utility
     var fbGroupService: FirebaseFirestoreGroupService!
+    
+    // Hold list of groups which found in the search
+    var groupList = [Group]()
+    
+    // Hold the current for search
+    var user: User!
+    
+    // Hold list of group id which the user registerd to
     var userGroupId = [String]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         	

@@ -13,10 +13,16 @@ import SwipeCellKit
 
 class MyGroupTableViewController: UITableViewController {
     
-    let db = Firestore.firestore()
-    var groupList = [Group]()
+    
+    // Firebase group service utility
     var fbGroupService: FirebaseFirestoreGroupService!
+    
+    // Hold the current list for display
+    var groupList = [Group]()
+    
+    // Hold the current user for segue
     var user : User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
@@ -30,7 +36,6 @@ class MyGroupTableViewController: UITableViewController {
         return groupList.count
     }
     
-    // Handle the cell view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
         cell.groupView_LBL_groupName.text = groupList[indexPath.row].groupName
@@ -40,12 +45,12 @@ class MyGroupTableViewController: UITableViewController {
         return cell
     }
     
-    // Segue to TodoListTableViewController while pressing on a single category item
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.taskSegue, sender: self)
     }
     
-    // MARK: - SEGUE
+    // MARK: - PREPARE FOR SEGUE
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.taskSegue {
             let destinationController = segue.destination as! TodoListTableViewController
@@ -84,7 +89,8 @@ class MyGroupTableViewController: UITableViewController {
     }
     
     
-    //MARK: - LOG OUT
+    //MARK: - LOG OUT AND REMOVE LISTENER
+    
     @IBAction func groupview_BTN_logout(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
@@ -96,32 +102,29 @@ class MyGroupTableViewController: UITableViewController {
     
 }
 
-    //MARK: - GROUP ON FINISH CALLBACK
+//MARK: - GROUP CALLBACK
+
 extension MyGroupTableViewController: GroupCallback {
-   
+    
     func onFinish(user: User, group: [Group]) {
-            self.groupList = group
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        self.groupList = group
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
+    }
 }
 
 // MARK: - EXTENSION SWIPE CELL
 
 extension MyGroupTableViewController : SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-    guard orientation == .right else { return nil }
-
-    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-        self.fbGroupService.removeGroupFromUser(user: self.user, group: self.groupList[indexPath.row])
+        guard orientation == .right else { return nil }
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.fbGroupService.removeGroupFromUser(user: self.user, group: self.groupList[indexPath.row])
+        }
+        deleteAction.image = UIImage(named: "delete")
+        return [deleteAction]
     }
-
-    // customize the action appearance
-    deleteAction.image = UIImage(named: "delete")
-        
-    return [deleteAction]
-    }
-
     
 }
+

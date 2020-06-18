@@ -8,18 +8,19 @@
 
 import Foundation
 
-class User: Codable, CustomStringConvertible{
+class User: Codable{
     
     var userEmail: String = ""
+    var userName: String  = ""
     var groupListId: [String] = [String]()
     
-    init(userEmail: String) {
+    init(userEmail: String, userName: String) {
         self.userEmail = userEmail
+        self.userName = userName
     }
+    
     init() {
         
     }
-    public var description: String {
-        return "User Email: \(self.userEmail)"
-    }
+    
 }
