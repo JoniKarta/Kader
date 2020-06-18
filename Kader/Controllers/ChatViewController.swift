@@ -22,7 +22,6 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chatView_TBL_chat.delegate = self
         chatView_TBL_chat.dataSource = self
         chatView_TBL_chat.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageReusableIdentifier")
         fbChatService = FirebaseFirestoreChatService(vc: self, callback: self)
@@ -70,11 +69,6 @@ extension ChatViewController: UITableViewDataSource {
     }
 }
 
-extension ChatViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-}
 
 extension ChatViewController: ChatCallback {
     func onFinish(messageList: [Message]) {

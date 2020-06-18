@@ -8,7 +8,8 @@
 
 import UIKit
 import SwipeCellKit
-
+import ChameleonFramework
+	
 class SearchGroupTableViewController: UITableViewController {
     
     var groupList = [Group]()
@@ -17,6 +18,7 @@ class SearchGroupTableViewController: UITableViewController {
     var userGroupId = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        	
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
         fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: false)
         fbGroupService.getAllGroups(user: user)
@@ -36,6 +38,11 @@ class SearchGroupTableViewController: UITableViewController {
             cell.accessoryType = .checkmark
         }else {
             cell.accessoryType = .none
+        }
+        if let color = FlatSkyBlue().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(groupList.count)){
+            cell.searchView_VIEW_content.backgroundColor = color
+            cell.searchView_LBL_creatorName.textColor = ContrastColorOf(color, returnFlat: true)
+            cell.searchView_LBL_groupName.textColor = ContrastColorOf(color, returnFlat: true)
         }
         return cell
     }

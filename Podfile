@@ -11,4 +11,6 @@ target 'Kader' do
   pod 'FirebaseFirestoreSwift'
   pod 'SwipeCellKit'
   pod 'IQKeyboardManagerSwift'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 end
+

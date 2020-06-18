@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class CustomTaskCell: UITableViewCell {
     
+    @IBOutlet weak var taskView_VIEW_taskContent: UIView!
     @IBOutlet weak var taskView_LBL_task: UILabel!
     @IBOutlet weak var taskView_LBL_doneBy: UILabel!
 }

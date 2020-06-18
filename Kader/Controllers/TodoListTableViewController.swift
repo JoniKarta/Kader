@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class TodoListTableViewController: UITableViewController{
     
@@ -35,11 +36,17 @@ class TodoListTableViewController: UITableViewController{
         cell.taskView_LBL_task.text = todoListArray[indexPath.row].task
         if todoListArray[indexPath.row].isDone == true {
             cell.taskView_LBL_doneBy.text = "Completed By: \(todoListArray[indexPath.row].completedBy)"
-            cell.accessoryType = .checkmark
-        }else {
-            cell.accessoryType = .none
+                cell.taskView_VIEW_taskContent.backgroundColor = FlatGreenDark()
+                cell.taskView_LBL_doneBy.textColor = ContrastColorOf(FlatGreenDark(), returnFlat: true)
+                cell.taskView_LBL_task.textColor = ContrastColorOf(FlatGreenDark(), returnFlat: true)
+                
+            } else {
             cell.taskView_LBL_doneBy.text = "This task isn't completed yet"
-        }
+                cell.taskView_VIEW_taskContent.backgroundColor = FlatRedDark()
+                cell.taskView_LBL_doneBy.textColor = ContrastColorOf(FlatRedDark(), returnFlat: true)
+                cell.taskView_LBL_task.textColor = ContrastColorOf(FlatRedDark(), returnFlat: true)
+                
+            }
         return cell
     }
     
@@ -49,7 +56,10 @@ class TodoListTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Handle the state of the current selected todo item
-        fbItemService.setItemDone(user: user, group: group, todoItem: todoListArray[indexPath.row])
+        if todoListArray[indexPath.row].isDone != true{
+            fbItemService.setItemDone(user: user, group: group, todoItem: todoListArray[indexPath.row])
+            
+        }
         
         // Handle the problem of selection a row and it flashes
         tableView.deselectRow(at: indexPath, animated: true)
@@ -63,9 +73,7 @@ class TodoListTableViewController: UITableViewController{
         let addItemDialog = UIAlertController(title:  "Add new task for the team", message:"", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item" , style: .default) { (action) in
-            // Create new todoItem
             let todoItem = TodoItem(task: newTaskTextField.text!)
-            
             self.fbItemService.setTodoItem(group: self.group, todoItem: todoItem)
         }
         

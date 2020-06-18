@@ -11,6 +11,7 @@ import UIKit
 import SwipeCellKit
 class CustomGroupSearchCell : SwipeTableViewCell{
     
+    @IBOutlet weak var searchView_VIEW_content: UIView!
     @IBOutlet weak var searchView_LBL_groupName: UILabel!
     @IBOutlet weak var searchView_LBL_creatorName: UILabel!
 }
