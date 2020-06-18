@@ -24,8 +24,6 @@ class FirebaseFirestoreChatService {
         self.vc = vc
     }
     
-    
-
     //MARK: - WRITE NEW MESSAGE
     func writeNewMessage(group: Group, message: Message) {
         do{
@@ -40,17 +38,9 @@ class FirebaseFirestoreChatService {
        
     }
     
-    
-    
-    
-    
-    
     //MARK: - READ ALL MESSAGE BY DATE
     
-    
     func readMessages(group: Group){
-        
-        
         db.collection(K.FireStore.chatCollection)
             .document(group.getUUID())
             .collection(K.FireStore.chatMessageCollection).order(by: "dateIntervalTime")
