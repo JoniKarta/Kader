@@ -61,6 +61,9 @@ class MyGroupTableViewController: UITableViewController {
         }else if segue.identifier == K.searchGroupSegue {
             let destinationController = segue.destination as! SearchGroupTableViewController
             destinationController.user = self.user
+        }else if segue.identifier == K.Segue.groupToProfile {
+            let destinationContoller = segue.destination as! ViewController
+            destinationContoller.user = self.user
         }
         
     }

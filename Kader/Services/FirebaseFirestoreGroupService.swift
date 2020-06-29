@@ -10,10 +10,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-protocol GroupCallback {
-    func onFinish(user: User, group: [Group])
-}
-
 class FirebaseFirestoreGroupService {
     let db = Firestore.firestore()
     let callback : GroupCallback?

@@ -27,8 +27,16 @@ struct K {
         static let userSubGroupCollection = "GroupList"
         static let chatCollection = "Chat"
         static let chatMessageCollection = "Messages"
+        static let userProfileImage = "Profiles"
     }
     
+    struct CellReusable {
+        
+    }
+    
+    struct Segue {
+        static let groupToProfile = "ProfileSegue"
+    }
     
 
 }

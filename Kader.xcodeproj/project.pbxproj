@@ -15,6 +15,8 @@
 		C01824FA24902CBE0046CBAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01824F924902CBE0046CBAB /* Assets.xcassets */; };
 		C01824FD24902CBE0046CBAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */; };
 		C018252124902E620046CBAB /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018252024902E620046CBAB /* TodoListTableViewController.swift */; };
+		C01983E124A2677A00B8C6F0 /* FirebaseFirestoreProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01983E024A2677A00B8C6F0 /* FirebaseFirestoreProfileService.swift */; };
+		C01983E324A267C900B8C6F0 /* ProfileCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01983E224A267C900B8C6F0 /* ProfileCallback.swift */; };
 		C019A1F724937F5000BFBF7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F624937F5000BFBF7B /* Constants.swift */; };
 		C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */; };
 		C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0506E38249A3F93007B0414 /* CustomTaskCell.swift */; };
@@ -27,6 +29,10 @@
 		C0A36C1824931FDE006AEBFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A36C1724931FDE006AEBFE /* User.swift */; };
 		C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A538142497AB7C00173E6F /* CustomGroupCell.swift */; };
 		C0A538172497BB4900173E6F /* CustomGroupSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A538162497BB4900173E6F /* CustomGroupSearchCell.swift */; };
+		C0A5D03024A041AF00973833 /* UserCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D02F24A041AF00973833 /* UserCallback.swift */; };
+		C0A5D03324A041FD00973833 /* ItemCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D03224A041FD00973833 /* ItemCallback.swift */; };
+		C0A5D03524A0421800973833 /* GroupCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D03424A0421800973833 /* GroupCallback.swift */; };
+		C0A5D03724A0422D00973833 /* ChatCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D03624A0422D00973833 /* ChatCallback.swift */; };
 		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */; };
@@ -71,6 +77,8 @@
 		C018250324902CBE0046CBAB /* KaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C018250E24902CBF0046CBAB /* KaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C018252024902E620046CBAB /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
+		C01983E024A2677A00B8C6F0 /* FirebaseFirestoreProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreProfileService.swift; sourceTree = "<group>"; };
+		C01983E224A267C900B8C6F0 /* ProfileCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCallback.swift; sourceTree = "<group>"; };
 		C019A1F624937F5000BFBF7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupTableViewController.swift; sourceTree = "<group>"; };
 		C0506E38249A3F93007B0414 /* CustomTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskCell.swift; sourceTree = "<group>"; };
@@ -83,6 +91,10 @@
 		C0A36C1724931FDE006AEBFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0A538142497AB7C00173E6F /* CustomGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupCell.swift; sourceTree = "<group>"; };
 		C0A538162497BB4900173E6F /* CustomGroupSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupSearchCell.swift; sourceTree = "<group>"; };
+		C0A5D02F24A041AF00973833 /* UserCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCallback.swift; sourceTree = "<group>"; };
+		C0A5D03224A041FD00973833 /* ItemCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCallback.swift; sourceTree = "<group>"; };
+		C0A5D03424A0421800973833 /* GroupCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCallback.swift; sourceTree = "<group>"; };
+		C0A5D03624A0422D00973833 /* ChatCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCallback.swift; sourceTree = "<group>"; };
 		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +157,7 @@
 				C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */,
 				C0F324F424949FF800B86691 /* FirebaseFirestoreItemService.swift */,
 				C0506E44249AB9D9007B0414 /* FirebaseChatService.swift */,
+				C01983E024A2677A00B8C6F0 /* FirebaseFirestoreProfileService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,8 +188,10 @@
 				C01824F024902CBD0046CBAB /* AppDelegate.swift */,
 				C01824F224902CBD0046CBAB /* SceneDelegate.swift */,
 				C00829E3249B91B200381FD7 /* Services */,
+				C0A5D03124A041B800973833 /* Callbacks */,
 				C0F324F62494A33C00B86691 /* Utility */,
 				C0EE37BB2490CB47009D36A5 /* Controllers */,
+				C0EE37BA2490CAE9009D36A5 /* Model */,
 				C0EE37BC2490CB5B009D36A5 /* Views */,
 				C01824F924902CBE0046CBAB /* Assets.xcassets */,
 				C01824FB24902CBE0046CBAB /* LaunchScreen.storyboard */,
@@ -184,6 +199,18 @@
 				C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */,
 			);
 			path = Kader;
+			sourceTree = "<group>";
+		};
+		C0A5D03124A041B800973833 /* Callbacks */ = {
+			isa = PBXGroup;
+			children = (
+				C0A5D02F24A041AF00973833 /* UserCallback.swift */,
+				C0A5D03224A041FD00973833 /* ItemCallback.swift */,
+				C0A5D03424A0421800973833 /* GroupCallback.swift */,
+				C0A5D03624A0422D00973833 /* ChatCallback.swift */,
+				C01983E224A267C900B8C6F0 /* ProfileCallback.swift */,
+			);
+			path = Callbacks;
 			sourceTree = "<group>";
 		};
 		C0EE37BA2490CAE9009D36A5 /* Model */ = {
@@ -207,7 +234,6 @@
 				C0F4710D24924BA400B3C37D /* RegisterViewController.swift */,
 				C019A1F824938E1C00BFBF7B /* SearchGroupTableViewController.swift */,
 				C0F79CB524995FBB0017665C /* ViewController.swift */,
-				C0EE37BA2490CAE9009D36A5 /* Model */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -414,22 +440,28 @@
 			files = (
 				C0506E45249AB9D9007B0414 /* FirebaseChatService.swift in Sources */,
 				C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */,
+				C01983E324A267C900B8C6F0 /* ProfileCallback.swift in Sources */,
 				C0A36C1624931F5F006AEBFE /* Group.swift in Sources */,
 				C019A1F724937F5000BFBF7B /* Constants.swift in Sources */,
 				C0506E39249A3F93007B0414 /* CustomTaskCell.swift in Sources */,
 				C0F324FA24955E5000B86691 /* Alert.swift in Sources */,
 				C0F324F82494E71700B86691 /* FirebaseFirestoreUserService.swift in Sources */,
+				C0A5D03524A0421800973833 /* GroupCallback.swift in Sources */,
 				C0506E3D249A9475007B0414 /* Message.swift in Sources */,
+				C0A5D03024A041AF00973833 /* UserCallback.swift in Sources */,
 				C0F4710C24924B8D00B3C37D /* LoginViewController.swift in Sources */,
 				C01824F124902CBD0046CBAB /* AppDelegate.swift in Sources */,
+				C01983E124A2677A00B8C6F0 /* FirebaseFirestoreProfileService.swift in Sources */,
 				C01824F324902CBD0046CBAB /* SceneDelegate.swift in Sources */,
 				C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */,
+				C0A5D03724A0422D00973833 /* ChatCallback.swift in Sources */,
 				C0506E42249A9536007B0414 /* MessageCell.swift in Sources */,
 				C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */,
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
 				C00829E2249B732000381FD7 /* Validator.swift in Sources */,
 				C0F79CB624995FBB0017665C /* ViewController.swift in Sources */,
+				C0A5D03324A041FD00973833 /* ItemCallback.swift in Sources */,
 				C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */,
 				C0A538172497BB4900173E6F /* CustomGroupSearchCell.swift in Sources */,
 				C0F324F524949FF800B86691 /* FirebaseFirestoreItemService.swift in Sources */,

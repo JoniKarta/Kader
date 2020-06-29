@@ -9,6 +9,7 @@ target 'Kader' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
   pod 'SwipeCellKit'
   pod 'IQKeyboardManagerSwift'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'

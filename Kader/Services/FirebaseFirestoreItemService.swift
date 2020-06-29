@@ -10,10 +10,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-protocol ItemCallback {
-    func onFinish(itemList: [TodoItem])
-}
-
 class FirebaseFirestoreItemService {
     let db = Firestore.firestore()
     let callback : ItemCallback?

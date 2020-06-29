@@ -10,9 +10,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-protocol ChatCallback {
-    func onFinish(messageList: [Message])
-}
 
 class FirebaseFirestoreChatService {
     let db = Firestore.firestore()

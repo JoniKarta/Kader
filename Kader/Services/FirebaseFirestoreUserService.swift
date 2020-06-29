@@ -10,10 +10,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-protocol UserCallback {
-    func onFinish(user: User)
-}
-
 class FirebaseFirestoreUserService {
     let db = Firestore.firestore()
     let callback : UserCallback?
