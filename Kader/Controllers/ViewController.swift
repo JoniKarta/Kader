@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var profile_VIEW_topView: UIView!
     @IBOutlet weak var imageCamera: UIImageView!
@@ -28,9 +29,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.viewDidLoad()
         fbProfileService = FirebaseFirestoreProfileService(vc: self, callback: self)
         setTopViewConfiguration()
-    
+        fbProfileService.downloadImageFromStorage(user: user)
         setCircleImage()
-       // Do any additional setup after loading the view.
     }
     
     func setTopViewConfiguration() {
@@ -50,9 +50,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             setCircleImage()
-            //imageCamera.image = pickedImage
+            imageCamera.image = pickedImage
             fbProfileService.uploadImage(user: user, uploadImage: imageCamera)
-            //fbProfileService.downloadImageFromStorage(user: user)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -66,10 +65,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
 }
 
-extension ViewController: ProfileCallback {
+extension ProfileViewController: ProfileCallback {
     func onFinish(url: String) {
-        print("============== DOWNLOADED URL ==================")
-        print(url)
+        let downloadedUrl = URL(string: url)
+        imageCamera.kf.setImage(with: downloadedUrl)
     }
     
     

@@ -62,7 +62,7 @@ class MyGroupTableViewController: UITableViewController {
             let destinationController = segue.destination as! SearchGroupTableViewController
             destinationController.user = self.user
         }else if segue.identifier == K.Segue.groupToProfile {
-            let destinationContoller = segue.destination as! ViewController
+            let destinationContoller = segue.destination as! ProfileViewController
             destinationContoller.user = self.user
         }
         

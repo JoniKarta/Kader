@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="-5132" y="-165"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="CsN-Cb-A5i">
             <objects>
-                <viewController id="tLI-be-s9K" customClass="ViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tLI-be-s9K" customClass="ProfileViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="reF-sM-wf3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,6 +250,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="militaryBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-A0-9OE">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="118.66666666666667"/>
+                                                <color key="backgroundColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldierIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aJJ-uK-Pc2">
                                                 <rect key="frame" x="157" y="49" width="100" height="100"/>
@@ -312,25 +313,28 @@
                                                         <rect key="frame" x="0.0" y="111" width="374" height="101.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tZ-pk-z2d">
-                                                                <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="54.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="66.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-Cx-IB8">
-                                                                <rect key="frame" x="0.0" y="67.333333333333314" width="374" height="34"/>
+                                                                <rect key="frame" x="0.0" y="79.333333333333314" width="374" height="22"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jonathan Karta" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8Z-yF-txd">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="281" height="34"/>
-                                                                        <color key="backgroundColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <color key="textColor" name="BrandLightBlue"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonathan karta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hs-3T-ki2">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="22"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-YD-iBC">
-                                                                        <rect key="frame" x="325" y="0.0" width="51" height="34"/>
-                                                                    </switch>
+                                                                        <color key="textColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-I0-NOQ">
+                                                                        <rect key="frame" x="332.66666666666669" y="0.0" width="41.333333333333314" height="22"/>
+                                                                        <state key="normal" image="pencil.circle" catalog="system"/>
+                                                                    </button>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="8hs-3T-ki2" firstAttribute="width" secondItem="hnF-I0-NOQ" secondAttribute="width" multiplier="7" id="vgq-jh-tWr"/>
+                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
@@ -378,6 +382,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="tintColor" red="0.66666666669999997" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="8bn-fc-g68" secondAttribute="trailing" id="5qJ-1n-qV3"/>
                                                     <constraint firstAttribute="trailing" secondItem="NfM-X6-M5B" secondAttribute="trailing" id="VG1-kO-tcC"/>
@@ -415,7 +420,7 @@
                         <outlet property="profile_LBL_email" destination="JWB-GO-SIG" id="nNc-vd-Z0T"/>
                         <outlet property="profile_LBL_noGroupEnrolled" destination="6xG-T3-Lj8" id="HAP-hd-3pz"/>
                         <outlet property="profile_LBL_noGroupManaged" destination="WIO-1A-cFK" id="abJ-9o-Fxo"/>
-                        <outlet property="profile_TLBL_userName" destination="y8Z-yF-txd" id="tCG-zo-pXe"/>
+                        <outlet property="profile_TLBL_userName" destination="8hs-3T-ki2" id="ofg-gm-MOe"/>
                         <outlet property="profile_VIEW_bottomView" destination="DxP-ol-A9H" id="DIJ-6K-biT"/>
                         <outlet property="profile_VIEW_topView" destination="L3f-22-Yui" id="NwD-FP-eaA"/>
                     </connections>
@@ -424,7 +429,7 @@
             </objects>
             <point key="canvasLocation" x="-3845" y="1133"/>
         </scene>
-        <!--My Group List-->
+        <!--Home-->
         <scene sceneID="guW-4f-xqj">
             <objects>
                 <tableViewController id="1sl-yD-cJT" customClass="MyGroupTableViewController" customModule="Kader" customModuleProvider="target" sceneMemberID="viewController">
@@ -513,14 +518,14 @@
                             <outlet property="delegate" destination="1sl-yD-cJT" id="eW2-Eq-W4D"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Group List" id="krY-TY-hVP">
+                    <navigationItem key="navigationItem" title="Home" id="krY-TY-hVP">
                         <leftBarButtonItems>
                             <barButtonItem title="Log out" id="sQS-h3-sH0">
                                 <connections>
                                     <action selector="groupview_BTN_logout:" destination="1sl-yD-cJT" id="dar-JK-Ics"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="ic_anonymous.png" id="XDg-IV-Lhj">
+                            <barButtonItem image="person.circle" catalog="system" id="XDg-IV-Lhj">
                                 <connections>
                                     <segue destination="tLI-be-s9K" kind="show" identifier="ProfileSegue" id="5Ez-Tz-pV3"/>
                                 </connections>
@@ -880,9 +885,10 @@
     <resources>
         <image name="applogo" width="398.33334350585938" height="708.33331298828125"/>
         <image name="camera.circle" catalog="system" width="128" height="121"/>
-        <image name="ic_anonymous.png" width="24" height="24"/>
         <image name="militaryBackground" width="626" height="626"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="registerHeader" width="2666.666748046875" height="1500"/>
         <image name="soldier" width="512" height="512"/>
         <image name="soldierIcon" width="512" height="512"/>

@@ -31,14 +31,13 @@ class FirebaseFirestoreProfileService {
     
     //MARK: - UPLOAD IMAGE TO STORAGE
     
-    func uploadImage(user: User, uploadImage: UIImageView) {
+    func uploadImage(user: User, uploadImage: UIImage) {
         
-        guard let image = uploadImage.image,
-            let data = image.jpegData(compressionQuality: 1.0) else {
-                Alert.displayAlertDialog(on: self.vc, title: "Error", message: "Something went wrong..")
-                return
+        guard let data = uploadImage.jpegData(compressionQuality: 1.0) else {
+            Alert.displayAlertDialog(on: self.vc, title: "Error", message: "Something went wrong..")
+            return
         }
-                
+        
         let reference = imageStorageReference.reference().child(K.FireStore.userProfileImage).child(user.userEmail)
         
         reference.putData(data, metadata: nil) {(metadata, error ) in
@@ -59,15 +58,16 @@ class FirebaseFirestoreProfileService {
                 let dataReference = Firestore.firestore()
                     .collection(K.FireStore.userProfileImage)
                     .document(user.userEmail)
-                                
+                
                 let data = ["imageUrl" : url.absoluteString]
                 
                 dataReference.setData(data, completion: {(error) in
                     if let err = error {
                         print("e\(err)")
                         return
-                    }})
-                self.callback?.onFinish(url: url.absoluteString)
+                    }
+                    self.callback?.onFinish(url: url.absoluteString)
+                })
             })
         }
     }
@@ -88,7 +88,7 @@ class FirebaseFirestoreProfileService {
                 print("Docuemtn does not exists!")
             }
         }
-     
+        
     }
     
 }
