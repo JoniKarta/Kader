@@ -75,10 +75,11 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
     }
 }
 extension ProfileViewController: ProfileCallback {
-    func onFinishWithIndexPath(url: String, index: IndexPath) {
-        // Do nothing
+    func onFinishWithIndexPath(url: String, index: Int) {
+        // do nothing
     }
     
+  
     func onFinish(url: String) {
         let downloadedUrl = URL(string: url)
         imageCamera.kf.setImage(with: downloadedUrl)

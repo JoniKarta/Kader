@@ -23,6 +23,7 @@ class MyGroupTableViewController: UITableViewController {
     
     // Hold the current user for segue
     var user : User!
+    var triggerReloadData = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +43,18 @@ class MyGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
         cell.groupView_LBL_groupName.text = groupList[indexPath.row].groupName
         cell.groupView_LBL_creator.text = groupList[indexPath.row].getCreator()
-        fbProfileService.downloadImageFromStorage(documentId: groupList[indexPath.row].getCreator(),indexPath: indexPath)
-
+        
+        //
         if let imageUrl = groupList[indexPath.row].groupImageUrl {
             let downloadedUrl = URL(string: imageUrl)
             cell.groupView_IMG_role.kf.setImage(with: downloadedUrl)
         }else {
             cell.groupView_IMG_role.image = user.userEmail != groupList[indexPath.row].getCreator() ? #imageLiteral(resourceName: "soldier") : #imageLiteral(resourceName: "commander")
-              cell.delegate = self
         }
         ImageUtility.circleImage(imageView: cell.groupView_IMG_role)
-          return cell
+        cell.delegate = self
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,7 +123,9 @@ extension MyGroupTableViewController: GroupCallback {
     
     func onFinish(user: User, group: [Group]) {
         self.groupList = group
-        
+        for idx in 0..<self.groupList.count {
+            fbProfileService.downloadImageFromStorage(documentId: groupList[idx].getCreator(),index: idx)
+        }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -130,12 +134,13 @@ extension MyGroupTableViewController: GroupCallback {
 }
 
 extension MyGroupTableViewController: ProfileCallback {
-    func onFinishWithIndexPath(url: String, index: IndexPath) {
-        self.groupList[index.row].groupImageUrl = url
+    func onFinishWithIndexPath(url: String, index: Int) {
+        self.groupList[index].groupImageUrl = url
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+    
     
     func onFinish(url: String) {
         //
@@ -148,7 +153,7 @@ extension MyGroupTableViewController: ProfileCallback {
 
 extension MyGroupTableViewController : SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+        guard orientation == .left else { return nil }
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             self.fbGroupService.removeGroupFromUser(user: self.user, group: self.groupList[indexPath.row])
         }

@@ -78,13 +78,11 @@ class FirebaseFirestoreProfileService {
             if let document = document, document.exists  {
                 let url = document.get("imageUrl") as! String
                 self.callback?.onFinish(url: url)
-            }else {
-                print("Docuemtn does not exists!")
             }
         }
     }
     
-    func downloadImageFromStorage(documentId: String, indexPath: IndexPath) {
+    func downloadImageFromStorage(documentId: String, index: Int) {
         let docRef = Firestore.firestore()
             .collection(K.FireStore.userProfileImage)
             .document(documentId)
@@ -92,10 +90,7 @@ class FirebaseFirestoreProfileService {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists  {
                 let url = document.get("imageUrl") as! String
-                
-                self.callback?.onFinishWithIndexPath(url: url, index: indexPath)
-            }else {
-                print("Docuemtn does not exists!")
+                self.callback?.onFinishWithIndexPath(url: url, index: index)
             }
         }
     }
