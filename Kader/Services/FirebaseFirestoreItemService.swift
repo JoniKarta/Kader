@@ -22,10 +22,10 @@ class FirebaseFirestoreItemService {
     
     func setTodoItem(group: Group, todoItem: TodoItem){
         db.collection(K.FireStore.groupsCollection)
-            .whereField("uuid", isEqualTo: group.getUUID())
+            .whereField(K.GroupFields.groupUUID, isEqualTo: group.getUUID())
             .getDocuments() {(documentSnapshot, err) in
                 if let err = err {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
+                    Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(err)")
                 } else {
                     for document in documentSnapshot!.documents {
                         let docRef = document.reference
@@ -34,7 +34,7 @@ class FirebaseFirestoreItemService {
                                 .document(todoItem.task).setData(from : todoItem)
                             self.getAllTodoItems(group: group)
                         }catch let error {
-                            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                            Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
                         }
                     }
                 }

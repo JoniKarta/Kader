@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
     // MARK: - PREPARE FOR SEGUE
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.loginSegue {
+        if segue.identifier == K.Segue.loginToHome {
             let destinationController = segue.destination as! MyGroupTableViewController
             destinationController.user = self.user
         }
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UserCallback {
     func onFinish(user: User) {
         self.user = user
-        self.performSegue(withIdentifier: K.loginSegue, sender: self)
+        self.performSegue(withIdentifier: K.Segue.loginToHome, sender: self)
     }
 }
 

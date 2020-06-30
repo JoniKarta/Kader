@@ -60,7 +60,7 @@ class RegisterViewController: UIViewController {
     //MARK: - PREPARE FOR SEGUE
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.registerSegue {
+        if segue.identifier == K.Segue.registerToHome {
             let destinationController = segue.destination as! MyGroupTableViewController
             destinationController.user = self.user
         }
@@ -71,7 +71,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: UserCallback {
     func onFinish(user: User) {
-        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+        self.performSegue(withIdentifier: K.Segue.registerToHome, sender: self)
     }
 }
 

@@ -63,7 +63,7 @@ class FirebaseFirestoreChatService {
                             }
                         }
                     }
-                    self.callback?.onFinish(messageList: self.messageList)
+                    self.callback?.onFinishDownloadMessages(messageList: self.messageList)
                 }
         }
     }

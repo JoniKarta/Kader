@@ -10,6 +10,6 @@ import Foundation
 
 
 protocol ProfileCallback {
-    func onFinish(url: String)
-    func onFinishWithIndexPath(url: String, index: Int)
+    func onFinishDownloadUrl(url: String)
+    func onFinishDownloadUrlWithIndex(url: String, index: Int)
 }

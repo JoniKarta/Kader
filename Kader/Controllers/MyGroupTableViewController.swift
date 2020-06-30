@@ -23,7 +23,6 @@ class MyGroupTableViewController: UITableViewController {
     
     // Hold the current user for segue
     var user : User!
-    var triggerReloadData = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +42,6 @@ class MyGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
         cell.groupView_LBL_groupName.text = groupList[indexPath.row].groupName
         cell.groupView_LBL_creator.text = groupList[indexPath.row].getCreator()
-        
         //
         if let imageUrl = groupList[indexPath.row].groupImageUrl {
             let downloadedUrl = URL(string: imageUrl)
@@ -58,19 +56,19 @@ class MyGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.taskSegue, sender: self)
+        performSegue(withIdentifier: K.Segue.homeToTaskList, sender: self)
     }
     
     // MARK: - PREPARE FOR SEGUE
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.taskSegue {
+        if segue.identifier == K.Segue.homeToTaskList {
             let destinationController = segue.destination as! TodoListTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationController.group = groupList[indexPath.row]
                 destinationController.user = self.user
             }
-        }else if segue.identifier == K.searchGroupSegue {
+        }else if segue.identifier == K.Segue.homeToSearch {
             let destinationController = segue.destination as! SearchGroupTableViewController
             destinationController.user = self.user
         }else if segue.identifier == K.Segue.groupToProfile {
@@ -134,7 +132,7 @@ extension MyGroupTableViewController: GroupCallback {
 }
 
 extension MyGroupTableViewController: ProfileCallback {
-    func onFinishWithIndexPath(url: String, index: Int) {
+    func onFinishDownloadUrlWithIndex(url: String, index: Int) {
         self.groupList[index].groupImageUrl = url
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -142,7 +140,7 @@ extension MyGroupTableViewController: ProfileCallback {
     }
     
     
-    func onFinish(url: String) {
+    func onFinishDownloadUrl(url: String) {
         //
     }
     

@@ -26,7 +26,7 @@ class FirebaseFirestoreUserService {
                 .setData(from: user)
             callback?.onFinish(user: user)
         }catch let error {
-            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+            Alert.displayAlertDialog(on: self.vc, title: "Error occurred", message: "\(error)")
         }
     }
     
@@ -42,10 +42,10 @@ class FirebaseFirestoreUserService {
                 if let user = user {
                     self.callback?.onFinish(user: user)
                 } else {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
+                    Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(String(describing: error))")
                 }
             case .failure(let error):
-                Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
             }
         }
     }

@@ -30,7 +30,7 @@ class FirebaseFirestoreGroupService {
             .document(user.userEmail)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(String(describing: error))")
+                    Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(String(describing: error))")
                     return
                 }
                 self.userResultHandler(document: document,isGroupFilter: isGroupFiltered)
@@ -48,7 +48,7 @@ class FirebaseFirestoreGroupService {
                 .getDocuments() { querySnapshot, error in
                     self.groupList = []
                     if let error = error {
-                        Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                        Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
                     }else{
                         for document in querySnapshot!.documents {
                             self.groupResultHandler(document: document)
@@ -92,7 +92,10 @@ class FirebaseFirestoreGroupService {
              if let document = document, document.exists {
                  Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
              } else {
-                 docRef.setData(["groupName": newGroup.groupName, "creator":    newGroup.getCreator(),"uuid" : newGroup.getUUID()])
+                docRef.setData([
+                    K.GroupFields.groupName :newGroup.groupName,
+                    K.GroupFields.groupCreator:newGroup.getCreator(),
+                    K.GroupFields.groupUUID: newGroup.getUUID()])
                     self.appendGroupToUser(user: user, group: newGroup)
              }
          }
@@ -100,16 +103,16 @@ class FirebaseFirestoreGroupService {
     // Remove group from user
       func removeGroupFromUser(user: User, group: Group){
           db.collection(K.FireStore.usersCollection)
-              .document(user.userEmail).updateData(["groupListId": FieldValue.arrayRemove([group.getUUID()])])
+            .document(user.userEmail).updateData([K.UserFields.userGroupListId: FieldValue.arrayRemove([group.getUUID()])])
       }
     //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.groupsCollection)
-            .whereField("groupName", isGreaterThanOrEqualTo: name)
+            .whereField(K.GroupFields.groupName, isEqualTo: name)
             .getDocuments() { (querySnapshot, error) in
                 self.groupList = []
                 if let error = error {
-                    Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+                    Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
                 }else {
                     if let snapshotDocument = querySnapshot?.documents {
                         for document in snapshotDocument {

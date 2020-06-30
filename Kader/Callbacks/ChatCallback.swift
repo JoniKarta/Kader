@@ -10,5 +10,5 @@ import Foundation
 
 
 protocol ChatCallback {
-    func onFinish(messageList: [Message])
+    func onFinishDownloadMessages(messageList: [Message])
 }

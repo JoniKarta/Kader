@@ -92,7 +92,7 @@ extension ChatViewController: UITableViewDataSource {
 // MARK: - CHAT CALLBACK
 
 extension ChatViewController: ChatCallback {
-    func onFinish(messageList: [Message]) {
+    func onFinishDownloadMessages(messageList: [Message]) {
         self.messageList = messageList
         DispatchQueue.main.async {
             self.chatView_TBL_chat.reloadData()

@@ -52,6 +52,7 @@ class SearchGroupTableViewController: UITableViewController {
             cell.searchView_VIEW_content.backgroundColor = color
             cell.searchView_LBL_creatorName.textColor = ContrastColorOf(color, returnFlat: true)
             cell.searchView_LBL_groupName.textColor = ContrastColorOf(color, returnFlat: true)
+            cell.tintColor = color
         }
         return cell
     }

@@ -63,7 +63,7 @@ class FirebaseFirestoreProfileService {
                         print("e\(err)")
                         return
                     }
-                    self.callback?.onFinish(url: url.absoluteString)
+                    self.callback?.onFinishDownloadUrl(url: url.absoluteString)
                 })
             })
         }
@@ -77,7 +77,7 @@ class FirebaseFirestoreProfileService {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists  {
                 let url = document.get("imageUrl") as! String
-                self.callback?.onFinish(url: url)
+                self.callback?.onFinishDownloadUrl(url: url)
             }
         }
     }
@@ -90,7 +90,7 @@ class FirebaseFirestoreProfileService {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists  {
                 let url = document.get("imageUrl") as! String
-                self.callback?.onFinishWithIndexPath(url: url, index: index)
+                self.callback?.onFinishDownloadUrlWithIndex(url: url, index: index)
             }
         }
     }
