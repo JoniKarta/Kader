@@ -7,12 +7,18 @@
 //
 
 import Foundation
-
+import UIKit
 class Group: Codable {
     
     private var uuid = UUID.init().uuidString
     private var creator: String = ""
     var groupName: String = ""
+    
+    var groupImageUrl: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case uuid, creator, groupName
+    }
     
     init(groupName: String, creator: String) {
         self.groupName = groupName

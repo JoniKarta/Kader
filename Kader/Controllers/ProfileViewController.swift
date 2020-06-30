@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         fbProfileService = FirebaseFirestoreProfileService(vc: self, callback: self)
         setTopViewConfiguration()
-        fbProfileService.downloadImageFromStorage(user: user)
+        fbProfileService.downloadImageFromStorage(documentId: user.userEmail)
         setCircleImage()
         setUserProfileDetails()
     }
@@ -75,6 +75,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
     }
 }
 extension ProfileViewController: ProfileCallback {
+    func onFinishWithIndexPath(url: String, index: IndexPath) {
+        // Do nothing
+    }
+    
     func onFinish(url: String) {
         let downloadedUrl = URL(string: url)
         imageCamera.kf.setImage(with: downloadedUrl)

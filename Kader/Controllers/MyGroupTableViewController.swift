@@ -17,6 +17,7 @@ class MyGroupTableViewController: UITableViewController {
     // Firebase group service utility
     var fbGroupService: FirebaseFirestoreGroupService!
     
+    var fbProfileService: FirebaseFirestoreProfileService!
     // Hold the current list for display
     var groupList = [Group]()
     
@@ -26,6 +27,7 @@ class MyGroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbGroupService = FirebaseFirestoreGroupService(vc: self, callback: self)
+        fbProfileService = FirebaseFirestoreProfileService(vc: self, callback: self)
         fbGroupService.onUserGroupListChangeListener(user: user, isGroupFiltered: true)
         
     }
@@ -40,9 +42,17 @@ class MyGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellReusableSelectedGroup, for: indexPath) as! CustomGroupCell
         cell.groupView_LBL_groupName.text = groupList[indexPath.row].groupName
         cell.groupView_LBL_creator.text = groupList[indexPath.row].getCreator()
-        cell.groupView_IMG_role.image = user.userEmail != groupList[indexPath.row].getCreator() ? #imageLiteral(resourceName: "soldier") : #imageLiteral(resourceName: "commander")
-        cell.delegate = self
-        return cell
+        fbProfileService.downloadImageFromStorage(documentId: groupList[indexPath.row].getCreator(),indexPath: indexPath)
+
+        if let imageUrl = groupList[indexPath.row].groupImageUrl {
+            let downloadedUrl = URL(string: imageUrl)
+            cell.groupView_IMG_role.kf.setImage(with: downloadedUrl)
+        }else {
+            cell.groupView_IMG_role.image = user.userEmail != groupList[indexPath.row].getCreator() ? #imageLiteral(resourceName: "soldier") : #imageLiteral(resourceName: "commander")
+              cell.delegate = self
+        }
+        ImageUtility.circleImage(imageView: cell.groupView_IMG_role)
+          return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,10 +121,27 @@ extension MyGroupTableViewController: GroupCallback {
     
     func onFinish(user: User, group: [Group]) {
         self.groupList = group
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+}
+
+extension MyGroupTableViewController: ProfileCallback {
+    func onFinishWithIndexPath(url: String, index: IndexPath) {
+        self.groupList[index.row].groupImageUrl = url
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+    
+    func onFinish(url: String) {
+        //
+    }
+    
+    
 }
 
 // MARK: - EXTENSION SWIPE CELL

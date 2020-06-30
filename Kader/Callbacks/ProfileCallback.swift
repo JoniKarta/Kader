@@ -11,4 +11,5 @@ import Foundation
 
 protocol ProfileCallback {
     func onFinish(url: String)
+    func onFinishWithIndexPath(url:String, index: IndexPath)
 }

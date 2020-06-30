@@ -25,10 +25,7 @@ class FirebaseFirestoreProfileService {
         self.callback = callback
         self.vc = vc
     }
-    
-    
-    
-    
+
     //MARK: - UPLOAD IMAGE TO STORAGE
     
     func uploadImage(user: User, uploadImage: UIImage) {
@@ -72,13 +69,10 @@ class FirebaseFirestoreProfileService {
         }
     }
     
-    func downloadImageFromStorage(user: User) {
-        
-        
-        // get the uuid from storage
+    func downloadImageFromStorage(documentId: String) {
         let docRef = Firestore.firestore()
             .collection(K.FireStore.userProfileImage)
-            .document(user.userEmail)
+            .document(documentId)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists  {
@@ -88,7 +82,22 @@ class FirebaseFirestoreProfileService {
                 print("Docuemtn does not exists!")
             }
         }
+    }
+    
+    func downloadImageFromStorage(documentId: String, indexPath: IndexPath) {
+        let docRef = Firestore.firestore()
+            .collection(K.FireStore.userProfileImage)
+            .document(documentId)
         
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists  {
+                let url = document.get("imageUrl") as! String
+                
+                self.callback?.onFinishWithIndexPath(url: url, index: indexPath)
+            }else {
+                print("Docuemtn does not exists!")
+            }
+        }
     }
     
 }

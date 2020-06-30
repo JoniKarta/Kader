@@ -34,6 +34,7 @@
 		C0A5D03524A0421800973833 /* GroupCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D03424A0421800973833 /* GroupCallback.swift */; };
 		C0A5D03724A0422D00973833 /* ChatCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5D03624A0422D00973833 /* ChatCallback.swift */; };
 		C0A992AD2492BCBC002CBF2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */; };
+		C0EA801F24AB26B0008D7CB1 /* ImageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA801E24AB26B0008D7CB1 /* ImageUtility.swift */; };
 		C0EE37B92490CAE5009D36A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37B82490CAE5009D36A5 /* TodoItem.swift */; };
 		C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */; };
 		C0F324F324947C3D00B86691 /* FirebaseFirestoreGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */; };
@@ -96,6 +97,7 @@
 		C0A5D03424A0421800973833 /* GroupCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCallback.swift; sourceTree = "<group>"; };
 		C0A5D03624A0422D00973833 /* ChatCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCallback.swift; sourceTree = "<group>"; };
 		C0A992AC2492BCBB002CBF2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0EA801E24AB26B0008D7CB1 /* ImageUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtility.swift; sourceTree = "<group>"; };
 		C0EE37B82490CAE5009D36A5 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		C0EE37BD24911E12009D36A5 /* MyGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewController.swift; sourceTree = "<group>"; };
 		C0F324F224947C3D00B86691 /* FirebaseFirestoreGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreGroupService.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				C019A1F624937F5000BFBF7B /* Constants.swift */,
 				C0F324F924955E5000B86691 /* Alert.swift */,
 				C00829E1249B732000381FD7 /* Validator.swift */,
+				C0EA801E24AB26B0008D7CB1 /* ImageUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				C0A538152497AB7C00173E6F /* CustomGroupCell.swift in Sources */,
 				C0A5D03724A0422D00973833 /* ChatCallback.swift in Sources */,
 				C0506E42249A9536007B0414 /* MessageCell.swift in Sources */,
+				C0EA801F24AB26B0008D7CB1 /* ImageUtility.swift in Sources */,
 				C019A1F924938E1C00BFBF7B /* SearchGroupTableViewController.swift in Sources */,
 				C0F4710E24924BA400B3C37D /* RegisterViewController.swift in Sources */,
 				C0EE37BE24911E12009D36A5 /* MyGroupTableViewController.swift in Sources */,
