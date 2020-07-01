@@ -35,7 +35,7 @@ class FirebaseFirestoreChatService {
        
     }
     
-    //MARK: - READ ALL MESSAGE BY DATE
+    //MARK: - READ ALL MESSAGES BY DATE
     
     func readMessages(group: Group){
         db.collection(K.FireStore.chatCollection)

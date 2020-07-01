@@ -68,7 +68,8 @@ class FirebaseFirestoreProfileService {
             })
         }
     }
-    
+  
+    //MARK: - DOWNLOAD IAMGE FROM STORAGE
     func downloadImageFromStorage(documentId: String) {
         let docRef = Firestore.firestore()
             .collection(K.FireStore.userProfileImage)

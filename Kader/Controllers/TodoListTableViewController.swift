@@ -29,7 +29,7 @@ class TodoListTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         fbItemService = FirebaseFirestoreItemService(vc: self, callback: self)
-        fbItemService.getAllTodoItems(group: group)
+        fbItemService.getAllTasks(group: group)
     }
   
     
@@ -63,7 +63,7 @@ class TodoListTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if todoList[indexPath.row].isDone != true{
-            fbItemService.setItemDone(user: user, group: group, todoItem: todoList[indexPath.row])
+            fbItemService.updateTaskState(user: user, group: group, todoItem: todoList[indexPath.row])
         }
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -77,7 +77,7 @@ class TodoListTableViewController: UITableViewController{
         
         let action = UIAlertAction(title: "Add Item" , style: .default) { (action) in
             let todoItem = TodoItem(task: newTaskTextField.text!)
-            self.fbItemService.setTodoItem(group: self.group, todoItem: todoItem)
+            self.fbItemService.addTask(group: self.group, todoItem: todoItem)
         }
         
         addItemDialog.addTextField {
@@ -107,7 +107,7 @@ class TodoListTableViewController: UITableViewController{
 extension TodoListTableViewController : UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        fbItemService.getItemFilteredByName(group: self.group, name: searchBar.text!)
+        fbItemService.getTasksFilteredByName(group: self.group, name: searchBar.text!)
     }
     
 }
@@ -116,7 +116,6 @@ extension TodoListTableViewController : UISearchBarDelegate {
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
         self.todoList = itemList
-        print(self.todoList)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

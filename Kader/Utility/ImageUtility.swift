@@ -15,7 +15,7 @@ class ImageUtility {
     static func circleImage(imageView: UIImageView){
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        //.clipsToBounds = true
+        imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 4
     }
