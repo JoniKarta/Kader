@@ -87,19 +87,28 @@ class FirebaseFirestoreGroupService {
     }
     
     func setGroup(user: User, newGroup: Group){
-         let docRef =  db.collection(K.FireStore.groupsCollection).document()
-         docRef.getDocument { (document, error) in
-             if let document = document, document.exists {
-                 Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
-             } else {
-                docRef.setData([
-                    K.GroupFields.groupName :newGroup.groupName,
-                    K.GroupFields.groupCreator:newGroup.getCreator(),
-                    K.GroupFields.groupUUID: newGroup.getUUID()])
-                    self.appendGroupToUser(user: user, group: newGroup)
-             }
-         }
-     }
+        db.collection(K.FireStore.groupsCollection)
+            .whereField(K.GroupFields.groupName, isEqualTo: newGroup.groupName)
+            .getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
+                }else {
+                    if ((querySnapshot?.documents.first) != nil) {
+                        Alert.displayAlertDialog(on: self.vc, title: "Group Already exists", message: "Sorry this group already exists try different name.")
+                        return
+                    }else {
+                        let docRef =  self.db.collection(K.FireStore.groupsCollection).document()
+                        docRef.setData([
+                            K.GroupFields.groupName :newGroup.groupName,
+                            K.GroupFields.groupCreator:newGroup.getCreator(),
+                            K.GroupFields.groupUUID: newGroup.getUUID()])
+                        self.appendGroupToUser(user: user, group: newGroup)
+                    }
+                }
+        }        
+    }
+    
+    
     // Remove group from user
       func removeGroupFromUser(user: User, group: Group){
           db.collection(K.FireStore.usersCollection)
