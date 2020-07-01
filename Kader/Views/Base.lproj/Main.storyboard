@@ -248,9 +248,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3f-22-Yui" userLabel="Top View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="197.66666666666666"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="militaryBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-A0-9OE">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-A0-9OE">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="118.66666666666667"/>
-                                                <color key="backgroundColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.15270619744977745" green="0.34605312040696962" blue="0.45516075443495352" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldierIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aJJ-uK-Pc2">
                                                 <rect key="frame" x="157" y="49" width="100" height="100"/>
@@ -289,23 +289,31 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-wG-0M2">
                                                 <rect key="frame" x="20" y="20.000000000000028" width="374" height="434.33333333333337"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="AXW-RO-Dvp" userLabel="Email Holder">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="AXW-RO-Dvp" userLabel="Email Holder">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="101"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-0O-Ujm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="50.666666666666664"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-0O-Ujm">
+                                                                <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="57"/>
                                                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonathan@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWB-GO-SIG">
-                                                                <rect key="frame" x="0.0" y="50.666666666666629" width="374" height="50.333333333333343"/>
+                                                                <rect key="frame" x="0.0" y="70" width="374" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSS-CW-FrD">
+                                                                <rect key="frame" x="0.0" y="100" width="374" height="1"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="sWJ-2l-nY9"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="TSS-CW-FrD" secondAttribute="trailing" id="R17-Be-IZ8"/>
                                                             <constraint firstAttribute="trailing" secondItem="JWB-GO-SIG" secondAttribute="trailing" id="UFq-dZ-iLH"/>
                                                         </constraints>
                                                     </stackView>
@@ -313,13 +321,13 @@
                                                         <rect key="frame" x="0.0" y="111" width="374" height="101.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tZ-pk-z2d">
-                                                                <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="66.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="52.333333333333336"/>
                                                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-Cx-IB8">
-                                                                <rect key="frame" x="0.0" y="79.333333333333314" width="374" height="22"/>
+                                                                <rect key="frame" x="0.0" y="65.333333333333314" width="374" height="22"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonathan karta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hs-3T-ki2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="22"/>
@@ -330,62 +338,64 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-I0-NOQ">
                                                                         <rect key="frame" x="332.66666666666669" y="0.0" width="41.333333333333314" height="22"/>
                                                                         <state key="normal" image="pencil.circle" catalog="system"/>
+                                                                        <connections>
+                                                                            <action selector="profile_BTN_changeUserName:" destination="tLI-be-s9K" eventType="touchUpInside" id="UZh-74-m1L"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="8hs-3T-ki2" firstAttribute="width" secondItem="hnF-I0-NOQ" secondAttribute="width" multiplier="7" id="vgq-jh-tWr"/>
                                                                 </constraints>
                                                             </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-ga-Lmr">
+                                                                <rect key="frame" x="0.0" y="100.33333333333331" width="374" height="1"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="kh9-Gt-fJc"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Aoe-ga-Lmr" secondAttribute="trailing" id="Te8-OU-86b"/>
                                                             <constraint firstAttribute="trailing" secondItem="8DR-Cx-IB8" secondAttribute="trailing" id="ncJ-Kq-DHR"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NfM-X6-M5B" userLabel="Managed Holder">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="NHp-vS-DCK" userLabel="Enrolled Holder">
                                                         <rect key="frame" x="0.0" y="222.33333333333331" width="374" height="101"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Group Managed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-3y-top">
-                                                                <rect key="frame" x="0.0" y="0.0" width="238.33333333333334" height="50.333333333333336"/>
-                                                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIO-1A-cFK">
-                                                                <rect key="frame" x="0.0" y="50.333333333333371" width="374" height="50.666666666666657"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <color key="textColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="WIO-1A-cFK" secondAttribute="trailing" id="K9O-IK-w6S"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NHp-vS-DCK" userLabel="Enrolled Holder">
-                                                        <rect key="frame" x="0.0" y="333.33333333333331" width="374" height="101"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Group Enrolled " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dve-fq-exb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="235" height="44.333333333333336"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Number Of Group Enrolled " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dve-fq-exb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="235" height="57"/>
                                                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xG-T3-Lj8">
-                                                                <rect key="frame" x="0.0" y="56.333333333333371" width="374" height="44.666666666666657"/>
+                                                                <rect key="frame" x="0.0" y="70" width="374" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.094117647060000004" green="0.30196078430000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K79-Sw-NqS">
+                                                                <rect key="frame" x="0.0" y="100" width="374" height="1"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="o1B-nj-JIH"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="6xG-T3-Lj8" secondAttribute="trailing" id="Ahc-bG-zgv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="K79-Sw-NqS" secondAttribute="trailing" id="oAq-RA-0YD"/>
                                                         </constraints>
                                                     </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J90-YC-IaK">
+                                                        <rect key="frame" x="0.0" y="333.33333333333331" width="374" height="101"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="tintColor" red="0.66666666669999997" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="8bn-fc-g68" secondAttribute="trailing" id="5qJ-1n-qV3"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NfM-X6-M5B" secondAttribute="trailing" id="VG1-kO-tcC"/>
                                                     <constraint firstAttribute="trailing" secondItem="AXW-RO-Dvp" secondAttribute="trailing" id="bsK-1A-F1l"/>
                                                     <constraint firstAttribute="trailing" secondItem="NHp-vS-DCK" secondAttribute="trailing" id="sBp-aJ-xPo"/>
                                                 </constraints>
@@ -419,7 +429,6 @@
                         <outlet property="imageCamera" destination="aJJ-uK-Pc2" id="eoM-dG-YgB"/>
                         <outlet property="profile_LBL_email" destination="JWB-GO-SIG" id="nNc-vd-Z0T"/>
                         <outlet property="profile_LBL_noGroupEnrolled" destination="6xG-T3-Lj8" id="HAP-hd-3pz"/>
-                        <outlet property="profile_LBL_noGroupManaged" destination="WIO-1A-cFK" id="abJ-9o-Fxo"/>
                         <outlet property="profile_TLBL_userName" destination="8hs-3T-ki2" id="ofg-gm-MOe"/>
                         <outlet property="profile_VIEW_bottomView" destination="DxP-ol-A9H" id="DIJ-6K-biT"/>
                         <outlet property="profile_VIEW_topView" destination="L3f-22-Yui" id="NwD-FP-eaA"/>
@@ -427,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcE-tW-sdp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3845" y="1133"/>
+            <point key="canvasLocation" x="-3846.376811594203" y="1132.3369565217392"/>
         </scene>
         <!--Home-->
         <scene sceneID="guW-4f-xqj">
@@ -887,7 +896,6 @@
         <image name="applogo" width="398.33334350585938" height="708.33331298828125"/>
         <image name="camera.circle" catalog="system" width="128" height="121"/>
         <image name="message" catalog="system" width="128" height="113"/>
-        <image name="militaryBackground" width="626" height="626"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>

@@ -18,24 +18,46 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profile_VIEW_bottomView: UIView!
     
     @IBOutlet weak var profile_LBL_email: UILabel!
-    @IBOutlet weak var profile_LBL_noGroupManaged: UILabel!
-    
+   
     @IBOutlet weak var profile_TLBL_userName: UILabel!
     @IBOutlet weak var profile_LBL_noGroupEnrolled: UILabel!
     
     
     var fbProfileService: FirebaseFirestoreProfileService!
+    var fbUserService: FirebaseFirestoreUserService!
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fbProfileService = FirebaseFirestoreProfileService(vc: self, callback: self)
+        fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
         setTopViewConfiguration()
         fbProfileService.downloadImageFromStorage(documentId: user.userEmail)
         setCircleImage()
         setUserProfileDetails()
     }
     
+    @IBAction func profile_BTN_changeUserName(_ sender: UIButton) {
+        var newTaskTextField = UITextField()
+            let changeUserNameDialog = UIAlertController(title: "Set Your New Name", message:"", preferredStyle: UIAlertController.Style.alert)
+            
+            let action = UIAlertAction(title: "OK" , style: .default) { (action) in
+                let userName = newTaskTextField.text!
+                self.fbUserService.setNewUserName(user: self.user, newUserName: userName)
+            }
+            
+            // Set the placeholder of the text and get the text from it
+            changeUserNameDialog.addTextField {
+                (alertTextField) in alertTextField.placeholder = "Type your new user name"
+                newTaskTextField = alertTextField
+            }
+            
+            changeUserNameDialog.addAction(action)
+            changeUserNameDialog.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            present(changeUserNameDialog, animated: true, completion:nil)
+        }
+    
+
     func setUserProfileDetails() {
         profile_LBL_email.text = user.userEmail
         profile_TLBL_userName.text = user.userName
@@ -76,13 +98,24 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
 }
 extension ProfileViewController: ProfileCallback {
     func onFinishDownloadUrlWithIndex(url: String, index: Int) {
-        // do nothing
+        //
     }
     
   
     func onFinishDownloadUrl(url: String) {
         let downloadedUrl = URL(string: url)
         imageCamera.kf.setImage(with: downloadedUrl)
+    }
+    
+    
+}
+
+
+extension ProfileViewController: UserCallback {
+    func onFinish(user: User) {
+        DispatchQueue.main.async {
+            self.profile_TLBL_userName.text = user.userName
+        }
     }
     
     

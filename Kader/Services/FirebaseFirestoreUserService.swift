@@ -49,6 +49,14 @@ class FirebaseFirestoreUserService {
             }
         }
     }
-
-    
-}
+    func setNewUserName(user: User, newUserName: String) {
+        if !Validator.validName(fullName: newUserName){
+            Alert.displayAlertDialog(on: self.vc, title: "Invalid User Name",
+                                     message: "Name need to be sperated by name and last name")
+            return
+        }
+        Firestore.firestore()
+            .collection(K.FireStore.usersCollection)
+            .document(user.userEmail).updateData(["userName": newUserName])
+        getUser(userEmail: user.userEmail)
+    }}
