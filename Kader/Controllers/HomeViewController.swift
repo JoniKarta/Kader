@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import Firebase
 import SwipeCellKit
 
-class MyGroupTableViewController: UITableViewController {
+class HomeViewController: UITableViewController {
     
     
     // Firebase group service utility
@@ -117,7 +117,7 @@ class MyGroupTableViewController: UITableViewController {
 
 //MARK: - GROUP CALLBACK
 
-extension MyGroupTableViewController: GroupCallback {
+extension HomeViewController: GroupCallback {
     
     func onFinish(user: User, group: [Group]) {
         self.groupList = group
@@ -131,7 +131,7 @@ extension MyGroupTableViewController: GroupCallback {
     }
 }
 
-extension MyGroupTableViewController: ProfileCallback {
+extension HomeViewController: ProfileCallback {
     func onFinishDownloadUrlWithIndex(url: String, index: Int) {
         self.groupList[index].groupImageUrl = url
         DispatchQueue.main.async {
@@ -149,7 +149,7 @@ extension MyGroupTableViewController: ProfileCallback {
 
 // MARK: - EXTENSION SWIPE CELL
 
-extension MyGroupTableViewController : SwipeTableViewCellDelegate {
+extension HomeViewController : SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .left else { return nil }
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in

@@ -89,6 +89,50 @@ class FirebaseFirestoreItemService {
             }
         }
     }
+    
+    
+    
+    
+    func getItemFilteredByName(group: Group, name: String) {
+         db.collection(K.FireStore.groupsCollection).whereField("uuid", isEqualTo: group.getUUID()).getDocuments() { (documentSnapshot, err) in
+                   if let err = err {
+                       Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(err)")
+                       return
+                   }
+            let document = documentSnapshot!.documents.first
+            document?.reference.collection(K.FireStore.tasksCollection)
+               .whereField("task", isGreaterThanOrEqualTo: name)
+               .getDocuments() { (querySnapshot, error) in
+                   self.itemList = []
+                   if let error = error {
+                       Alert.displayAlertDialog(on: self.vc, title: "Error Occurred", message: "\(error)")
+                   }else {
+                       if let snapshotDocument = querySnapshot?.documents {
+                           for document in snapshotDocument {
+                               self.itemResultHandler(document: document)
+                           }
+                        self.callback?.onFinish(itemList: self.itemList)
+                       }
+                   }
+           }
+       }
+    }
+    
+    
+    func itemResultHandler(document: QueryDocumentSnapshot) {
+        let result = Result {
+            try document.data(as: TodoItem.self)
+        }
+        switch result {
+        case .success(let item):
+            if let item = item {
+                self.itemList.append(item)
+            }
+        case .failure(let error):
+            Alert.displayAlertDialog(on: self.vc, title: "Fatal Error", message: "\(error)")
+        }
+    }
+        
 }
 
 

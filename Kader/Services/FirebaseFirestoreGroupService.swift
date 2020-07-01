@@ -117,7 +117,7 @@ class FirebaseFirestoreGroupService {
     //MARK: - QUERY GET ALL GROUPS BY NAME
     func getGroupFilteredByName(name: String) {
         db.collection(K.FireStore.groupsCollection)
-            .whereField(K.GroupFields.groupName, isEqualTo: name)
+            .whereField(K.GroupFields.groupName, isGreaterThanOrEqualTo: name)
             .getDocuments() { (querySnapshot, error) in
                 self.groupList = []
                 if let error = error {

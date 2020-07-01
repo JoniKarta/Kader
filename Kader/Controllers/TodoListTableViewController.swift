@@ -107,7 +107,7 @@ class TodoListTableViewController: UITableViewController{
 extension TodoListTableViewController : UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-                print(searchBar.text!)
+        fbItemService.getItemFilteredByName(group: self.group, name: searchBar.text!)
     }
     
 }
@@ -116,6 +116,7 @@ extension TodoListTableViewController : UISearchBarDelegate {
 extension TodoListTableViewController: ItemCallback{
     func onFinish(itemList: [TodoItem]) {
         self.todoList = itemList
+        print(self.todoList)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

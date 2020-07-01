@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import IQKeyboardManagerSwift
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var register_TEXTVIEW_email: UITextField!
@@ -26,10 +27,14 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyBoard()
         fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
     }
     
     //MARK: - REGISTER
-   
+    
     @IBAction func register_BTN_regiseration(_ sender: UIButton) {
         
         if let email = register_TEXTVIEW_email.text, let password = register_TEXTVIEW_password.text, let confirm = register_TEXTVIEW_confirm.text {
@@ -61,7 +66,7 @@ class RegisterViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.registerToHome {
-            let destinationController = segue.destination as! MyGroupTableViewController
+            let destinationController = segue.destination as! HomeViewController
             destinationController.user = self.user
         }
     }

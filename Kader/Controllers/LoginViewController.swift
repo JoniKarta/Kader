@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.loginToHome {
-            let destinationController = segue.destination as! MyGroupTableViewController
+            let destinationController = segue.destination as! HomeViewController
             destinationController.user = self.user
         }
     }
