@@ -33,8 +33,8 @@ class ProfileViewController: UIViewController {
         fbUserService = FirebaseFirestoreUserService(vc: self, callback: self)
         setTopViewConfiguration()
         fbProfileService.downloadImageFromStorage(documentId: user.userEmail)
-        setCircleImage()
-        setUserProfileDetails()
+        fbUserService.getUser(userEmail: user.userEmail)
+        ImageUtility.circleImage(imageView: imageCamera)
     }
     
     @IBAction func profile_BTN_changeUserName(_ sender: UIButton) {
@@ -57,25 +57,12 @@ class ProfileViewController: UIViewController {
             present(changeUserNameDialog, animated: true, completion:nil)
         }
     
-
-    func setUserProfileDetails() {
-        profile_LBL_email.text = user.userEmail
-        profile_TLBL_userName.text = user.userName
-        profile_LBL_noGroupEnrolled.text = String(user.groupListId.count)
-    }
     
     func setTopViewConfiguration() {
         profile_VIEW_topView.layer.borderWidth = 5
         profile_VIEW_bottomView.layer.borderWidth = 5
     }
-    
-    func setCircleImage() {
-        imageCamera.contentMode = .scaleToFill
-        imageCamera.layer.cornerRadius = imageCamera.frame.size.width / 2
-        imageCamera.clipsToBounds = true
-        imageCamera.layer.borderColor = UIColor.white.cgColor
-        imageCamera.layer.borderWidth = 4
-    }
+
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -90,31 +77,30 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
     func imagePickerController(_ picker:
         UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            setCircleImage()
             fbProfileService.uploadImage(user: user, uploadImage: pickedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
 extension ProfileViewController: ProfileCallback {
     func onFinishDownloadUrlWithIndex(url: String, index: Int) {
         //
     }
     
-  
     func onFinishDownloadUrl(url: String) {
         let downloadedUrl = URL(string: url)
         imageCamera.kf.setImage(with: downloadedUrl)
     }
-    
-    
 }
-
 
 extension ProfileViewController: UserCallback {
     func onFinish(user: User) {
         DispatchQueue.main.async {
+            self.profile_LBL_email.text = self.user.userEmail
             self.profile_TLBL_userName.text = user.userName
+            self.profile_LBL_noGroupEnrolled.text = String(user.groupListId.count)
+            
         }
     }
     
